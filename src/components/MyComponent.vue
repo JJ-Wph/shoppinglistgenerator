@@ -117,18 +117,17 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
+
 .recipeDiv {
   display: flex;
-  flex-wrap: wrap-reverse;
+  flex-wrap: wrap;
   flex-direction: column;
-  justify-items: center;
+  justify-content: center;
   align-items: center;
-  width: 30%;
-  height: 80%;
+  width: 25%;
+  height: 15rem;
   border: 1px solid green;
-  margin: auto;
-  padding: auto;
   vertical-align: bottom;
 }
 
