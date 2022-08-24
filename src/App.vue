@@ -1,23 +1,42 @@
 <template>
   <HeaderBar/>
-  <MyComponent/>
+  <BreakfastComponent/>
+  <LunchComponent/>
+  <DinnerComponent/>
+  <SnackComponent/>
 </template>
 
 <script>
-import MyComponent from './components/MyComponent.vue'
 import HeaderBar from './components/HeaderBar.vue';
+import BreakfastComponent from './components/BreakfastComponent.vue'
+import LunchComponent from './components/LunchComponent.vue'
+import DinnerComponent from './components/DinnerComponent.vue'
+import SnackComponent from './components/SnackComponent.vue';
 
 export default {
   name: 'App',
   components: {
     HeaderBar,
-    MyComponent,
+    BreakfastComponent,
+    LunchComponent,
+    DinnerComponent,
+    SnackComponent
 }
 }
 </script>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&display=swap');
+
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+
+}
+
 #app {
   display: flex;
   flex-direction: column;
@@ -29,6 +48,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: lightblue;
+  text-align: center;
   background-color: darkgrey;
 };
 
