@@ -10,12 +10,11 @@
         </ul>
     </nav>
     <div class="recipeDiv">
-      <p>{{listOfIgredients.bacon}}</p>
-      <p>{{listOfIgredients.eggs}}</p>
-      <p>{{listOfIgredients.roll}}</p>
+        <p>{{listOfIgredients.bacon}}</p>
+        <p>{{listOfIgredients.eggs}}</p>
+        <p>{{listOfIgredients.roll}}</p>
     </div>
   </header>
-  
 </template>
 
 <script>
@@ -35,6 +34,21 @@ export default {
             milk: 0,
             curds: 0,
             raisins: 0,
+            vanillaSkyr: 0,
+            mayonnaise: 0,
+            chives: 0,
+            tofu: 0,
+            pasta: 0,
+            chicken: 0,
+            sweetPotato: 0,
+            chickPeas: 0,
+            breadCrumbs: 0,
+            sweetPepper: 0,
+            cucumber: 0,
+            chips: 0,
+            carrotChips: 0,
+            chocolate: 0,
+            sticks: 0,
         });
 
         return {listOfIgredients}

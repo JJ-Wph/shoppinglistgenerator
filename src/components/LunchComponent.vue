@@ -1,12 +1,12 @@
 <template>
-      <div class="container">
-    <div class="recipeDiv" v-for="recipe in lunchRecipes" v-bind:key="recipe.firstName">
-      <p> Posiłek {{ recipe.vegan }} </p>
-      <p> {{ recipe.firstName }} </p>
-      <p> {{ recipe.typeOfMeal }} </p>
-      <button @click="recipe.addMethod">Dodaj do listy</button>
+    <div class="container">
+        <div class="recipeDiv" v-for="recipe in lunchRecipes" v-bind:key="recipe.firstName">
+            <p> Posiłek {{ recipe.vegan }} </p>
+            <p> {{ recipe.firstName }} </p>
+            <p> {{ recipe.typeOfMeal }} </p>
+            <button @click="recipe.addMethod">Dodaj do listy</button>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
