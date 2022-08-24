@@ -3,7 +3,7 @@
     <h3>Shopping List Generator</h3>
     <nav>
         <ul>
-            <li>Śniadania</li>
+            <li @click="activateBreakfast">Śniadania</li>
             <li>Obiady</li>
             <li>Kolacje</li>
             <li>Przekąski</li>
@@ -51,7 +51,11 @@ export default {
             sticks: 0,
         });
 
-        return {listOfIgredients}
+        function activateBreakfast() {
+            // isBreakfastActive.value = true;
+            // isLunchActive.value = false;
+        }
+        return {listOfIgredients, activateBreakfast, }
     }
 }
 </script>

@@ -1,9 +1,9 @@
 <template>
   <HeaderBar/>
-  <BreakfastComponent/>
-  <LunchComponent/>
-  <DinnerComponent/>
-  <SnackComponent/>
+  <BreakfastComponent v-if="isBreakfastActive"/>
+  <LunchComponent v-if="isLunchActive"/>
+  <DinnerComponent v-if="isDinnerActive"/>
+  <SnackComponent v-if="isSnackActive"/>
 </template>
 
 <script>
@@ -13,6 +13,7 @@ import LunchComponent from './components/LunchComponent.vue'
 import DinnerComponent from './components/DinnerComponent.vue'
 import SnackComponent from './components/SnackComponent.vue';
 
+import {ref} from 'vue';
 export default {
   name: 'App',
   components: {
@@ -21,7 +22,21 @@ export default {
     LunchComponent,
     DinnerComponent,
     SnackComponent
-}
+  },
+
+  setup(){
+    const isBreakfastActive = ref(true);
+    const isLunchActive = ref(false);
+    const isDinnerActive = ref(false);
+    const isSnackActive = ref(false);
+
+    return {
+      isBreakfastActive, 
+      isLunchActive, 
+      isDinnerActive, 
+      isSnackActive
+    }
+  }
 }
 </script>
 
