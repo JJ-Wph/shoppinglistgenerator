@@ -4,9 +4,9 @@
     <nav>
         <ul>
             <li @click="activateBreakfast">Śniadania</li>
-            <li>Obiady</li>
-            <li>Kolacje</li>
-            <li>Przekąski</li>
+            <li @click="activateLunch">Obiady</li>
+            <li @click="activateDinner">Kolacje</li>
+            <li @click="activateSnack">Przekąski</li>
         </ul>
     </nav>
     <div class="recipeDiv">
@@ -15,13 +15,34 @@
         <p>{{listOfIgredients.roll}}</p>
     </div>
   </header>
+  <BreakfastComponent v-if="isBreakfastActive"/>
+  <LunchComponent v-if="isLunchActive"/>
+  <DinnerComponent v-if="isDinnerActive"/>
+  <SnackComponent v-if="isSnackActive"/>
 </template>
 
 <script>
-import {reactive} from 'vue'
+import BreakfastComponent from './BreakfastComponent.vue'
+import LunchComponent from './LunchComponent.vue'
+import DinnerComponent from './DinnerComponent.vue'
+import SnackComponent from './SnackComponent.vue'
+
+import {reactive, ref} from 'vue'
 export default {
     name: 'HeaderBar',
+    components: {
+    BreakfastComponent,
+    LunchComponent,
+    DinnerComponent,
+    SnackComponent,
+},
+
     setup(){
+        const isBreakfastActive = ref(true);
+        const isLunchActive = ref(false);
+        const isDinnerActive = ref(false);
+        const isSnackActive = ref(false);
+
         const listOfIgredients = reactive({
             onion: 0,
             tomato: 0,
@@ -49,13 +70,47 @@ export default {
             carrotChips: 0,
             chocolate: 0,
             sticks: 0,
-        });
+    });
 
         function activateBreakfast() {
-            // isBreakfastActive.value = true;
-            // isLunchActive.value = false;
+            isBreakfastActive.value = true;
+            isLunchActive.value = false;
+            isDinnerActive.value = false;
+            isSnackActive.value = false;
         }
-        return {listOfIgredients, activateBreakfast, }
+
+        function activateLunch() {
+            isBreakfastActive.value = false;
+            isLunchActive.value = true;
+            isDinnerActive.value = false;
+            isSnackActive.value = false;
+        }
+
+        function activateDinner() {
+            isBreakfastActive.value = false;
+            isLunchActive.value = false;
+            isDinnerActive.value = true;
+            isSnackActive.value = false;
+        }
+
+        function activateSnack() {
+            isBreakfastActive.value = false;
+            isLunchActive.value = false;
+            isDinnerActive.value = false;
+            isSnackActive.value = true;
+        }
+
+        return { 
+            isBreakfastActive, 
+            isLunchActive, 
+            isDinnerActive, 
+            isSnackActive,
+            listOfIgredients, 
+            activateBreakfast,
+            activateLunch, 
+            activateDinner,
+            activateSnack
+        };
     }
 }
 </script>

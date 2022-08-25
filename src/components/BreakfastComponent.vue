@@ -64,27 +64,19 @@ export default {
       console.log(breakfastRecipes.value[0].eggs);
     }
 
-    function addCheeseburger() {
-      console.log('recipeburger');
-    }
-
-    function addPancakes(){
-      console.log('dupa pipa');
-    }
-
-
-
-    function addTofuPaste(){
-      console.log(breakfastRecipes.value[2].sweetPotato);
-    }
-
     function addSkyrPancakes(){
-      console.log(breakfastRecipes.value[2].sweetPotato);
+      console.log(breakfastRecipes.value[2].mayonnaise);
     }
 
     function addEggSalad(){
-      console.log(breakfastRecipes.value[2].sweetPotato);
+      console.log(breakfastRecipes.value[1].firstName);
     }
+
+    function addTofuPaste(){
+      console.log(breakfastRecipes.value[2].chives);
+    }
+
+ 
 
 
 
@@ -93,8 +85,6 @@ export default {
     return { 
       breakfastRecipes,  
       addScrambledEggs, 
-      addCheeseburger, 
-      addPancakes, 
       addTofuPaste,
       addSkyrPancakes,
       addEggSalad,
