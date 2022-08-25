@@ -15,7 +15,13 @@
         <p>{{listOfIgredients.roll}}</p>
     </div>
   </header>
-  <BreakfastComponent v-if="isBreakfastActive"/>
+    <BreakfastComponent 
+        v-if="isBreakfastActive" 
+        @add-eggs-to-list=addScrambledEggs
+        @add-skyr-pancakes-to-list=addSkyrPancakes
+    />
+
+
   <LunchComponent v-if="isLunchActive"/>
   <DinnerComponent v-if="isDinnerActive"/>
   <SnackComponent v-if="isSnackActive"/>
@@ -36,7 +42,6 @@ export default {
     DinnerComponent,
     SnackComponent,
 },
-
     setup(){
         const isBreakfastActive = ref(true);
         const isLunchActive = ref(false);
@@ -71,6 +76,26 @@ export default {
             chocolate: 0,
             sticks: 0,
     });
+
+        const addScrambledEggs = val => {
+            listOfIgredients.eggs += val.eggs;
+            listOfIgredients.onion += val.onion;
+            listOfIgredients.bacon += val.bacon;
+            listOfIgredients.roll += val.roll;
+            listOfIgredients.tomato += val.tomato;
+            console.log(listOfIgredients.eggs);
+            console.log(listOfIgredients.onion);
+            console.log(listOfIgredients.bacon);
+            console.log(listOfIgredients.roll);
+            console.log(listOfIgredients.tomato);
+        }
+
+        const addSkyrPancakes = val => {
+            listOfIgredients.eggs += val.eggs;
+            listOfIgredients.vanillaSkyr += val.eggs;
+            listOfIgredients.flour += val.flour;
+            console.log(listOfIgredients.flour);
+        }
 
         function activateBreakfast() {
             isBreakfastActive.value = true;
@@ -109,7 +134,9 @@ export default {
             activateBreakfast,
             activateLunch, 
             activateDinner,
-            activateSnack
+            activateSnack,
+            addScrambledEggs,
+            addSkyrPancakes
         };
     }
 }

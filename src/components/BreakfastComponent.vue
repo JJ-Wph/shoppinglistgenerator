@@ -14,7 +14,7 @@ import { ref } from "vue";
 
 export default {
   name: 'BreakfastComponent',
-  setup() {
+  setup(props, {emit}) {
     const breakfastRecipes = ref([
       {
         firstName: 'Jajecznica na boczku z pomidorami',
@@ -61,11 +61,11 @@ export default {
 
 
     function addScrambledEggs(){
-      console.log(breakfastRecipes.value[0].eggs);
+      emit('addEggsToList', breakfastRecipes.value[0])
     }
 
     function addSkyrPancakes(){
-      console.log(breakfastRecipes.value[2].mayonnaise);
+      emit('addSkyrPancakesToList', breakfastRecipes.value[1])
     }
 
     function addEggSalad(){
