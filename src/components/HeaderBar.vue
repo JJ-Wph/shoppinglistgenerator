@@ -10,14 +10,12 @@
         </ul>
     </nav>
     <div class="recipeDiv">
-        <p>{{listOfIgredients.bacon}}</p>
-        <p>{{listOfIgredients.onion}}</p>
-        <p>{{listOfIgredients.eggs}}</p>
-        <p>{{listOfIgredients.roll}}</p>
-        <p>{{listOfIgredients.milk}}</p>
-        <p>{{listOfIgredients.curds}}</p>
-        <p>{{listOfIgredients.carrotChips}}</p>
-        <p>{{listOfIgredients.chips}}</p>
+        <div v-for="product in listOfIgredients" :key="product">
+            <p v-if="product.value > 0">{{product.polishWord}}: {{product.value}}</p>
+        </div>
+
+           
+
     </div>
   </header>
     <BreakfastComponent 
@@ -75,40 +73,40 @@ export default {
         const isSnackActive = ref(false);
 
         const listOfIgredients = reactive({
-            onion: 0,
-            tomato: 0,
-            roll: 0,
-            bacon: 0,
-            cheese: 0,
-            eggs: 0,
-            beef: 0,
-            flour: 0,
-            milk: 0,
-            curds: 0,
-            raisins: 0,
-            vanillaSkyr: 0,
-            mayonnaise: 0,
-            chives: 0,
-            tofu: 0,
-            pasta: 0,
-            chicken: 0,
-            sweetPotato: 0,
-            chickPeas: 0,
-            breadCrumbs: 0,
-            sweetPepper: 0,
-            cucumber: 0,
-            chips: 0,
-            carrotChips: 0,
-            chocolate: 0,
-            sticks: 0,
+            onion:{ value: 0, polishWord: 'cebula'},
+            tomato:{ value: 0, polishWord: 'pomidor'},
+            roll:{ value: 0, polishWord: 'bułka'},
+            bacon: { value: 0, polishWord: 'bekon'},
+            cheese: { value: 0, polishWord: 'ser żółty'},
+            eggs: { value: 0, polishWord: 'jaja'},
+            beef: { value: 0, polishWord: 'wołowina'},
+            flour: { value: 0, polishWord: 'mąka'},
+            milk: { value: 0, polishWord: 'mleko'},
+            curds: { value: 0, polishWord: 'serek wiejski'},
+            raisins: { value: 0, polishWord: 'rodzynki'},
+            vanillaSkyr: { value: 0, polishWord: 'skyr waniliowy'},
+            mayonnaise: { value: 0, polishWord: 'majonez'},
+            chives: { value: 0, polishWord: 'szczypiorek'},
+            tofu: { value: 0, polishWord: 'tofu'},
+            pasta: { value: 0, polishWord: 'makaron'},
+            chicken: { value: 0, polishWord: 'pierś z kurczaka'},
+            sweetPotato: { value: 0, polishWord: 'batat'},
+            chickPeas: { value: 0, polishWord: 'ciecierzyca'},
+            breadCrumbs: { value: 0, polishWord: 'bułka tarta'},
+            sweetPepper: { value: 0, polishWord: 'papryka słodka'},
+            cucumber: { value: 0, polishWord: 'ogórek'},
+            chips: { value: 0, polishWord: 'chipsy'},
+            carrotChips: { value: 0, polishWord: 'chipsy marchewkowe'},
+            chocolate: { value: 0, polishWord: 'czekolada'},
+            sticks: { value: 0, polishWord: 'paluszki'},
     });
 
         const addScrambledEggs = val => {
-            listOfIgredients.eggs += val.eggs;
-            listOfIgredients.onion += val.onion;
-            listOfIgredients.bacon += val.bacon;
-            listOfIgredients.roll += val.roll;
-            listOfIgredients.tomato += val.tomato;
+            listOfIgredients.eggs.value += val.eggs;
+            listOfIgredients.onion.value += val.onion;
+            listOfIgredients.bacon.value += val.bacon;
+            listOfIgredients.roll.value += val.roll;
+            listOfIgredients.tomato.value += val.tomato;
         }
 
         const addSkyrPancakes = val => {
