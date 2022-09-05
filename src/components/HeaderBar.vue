@@ -11,20 +11,46 @@
     </nav>
     <div class="recipeDiv">
         <p>{{listOfIgredients.bacon}}</p>
+        <p>{{listOfIgredients.onion}}</p>
         <p>{{listOfIgredients.eggs}}</p>
         <p>{{listOfIgredients.roll}}</p>
+        <p>{{listOfIgredients.milk}}</p>
+        <p>{{listOfIgredients.curds}}</p>
+        <p>{{listOfIgredients.carrotChips}}</p>
+        <p>{{listOfIgredients.chips}}</p>
     </div>
   </header>
     <BreakfastComponent 
         v-if="isBreakfastActive" 
         @add-eggs-to-list=addScrambledEggs
         @add-skyr-pancakes-to-list=addSkyrPancakes
+        @add-Egg-Salad-To-List=addEggSalad
+        @add-Tofu-Paste-To-List=addTofuPaste
     />
 
+    <LunchComponent 
+        v-if="isLunchActive"
+        @add-Chicken-Pasta-To-List=addChickenPasta
+        @add-Cheeseburger-To-List=addCheeseburger
+        @add-Pancakes-To-List=addPancakes
+        @add-Vege-Nuggets=addVegeNuggets
+    />
 
-  <LunchComponent v-if="isLunchActive"/>
-  <DinnerComponent v-if="isDinnerActive"/>
-  <SnackComponent v-if="isSnackActive"/>
+    <DinnerComponent 
+        v-if="isDinnerActive"
+        @add-Chicken-Salad-To-List=addChickenSalad
+        @add-Cheese-Sandwich-To-List=addCheeseSandwich
+        @add-Tofu-Salad-To-List=addTofuSalad
+        @add-Sweet-Potatos-To-List=addSweetPotatos
+    />
+
+    <SnackComponent 
+        v-if="isSnackActive"
+        @add-Chips-To-List=addChips
+        @add-Carrot-Chips-To-List=addCarrotChips
+        @add-Chocolate-To-List=addChocolate
+        @add-Sticks-To-List=addSticks
+    />
 </template>
 
 <script>
@@ -83,18 +109,103 @@ export default {
             listOfIgredients.bacon += val.bacon;
             listOfIgredients.roll += val.roll;
             listOfIgredients.tomato += val.tomato;
-            console.log(listOfIgredients.eggs);
-            console.log(listOfIgredients.onion);
-            console.log(listOfIgredients.bacon);
-            console.log(listOfIgredients.roll);
-            console.log(listOfIgredients.tomato);
         }
 
         const addSkyrPancakes = val => {
             listOfIgredients.eggs += val.eggs;
-            listOfIgredients.vanillaSkyr += val.eggs;
+            listOfIgredients.vanillaSkyr += val.vanillaSkyr;
             listOfIgredients.flour += val.flour;
-            console.log(listOfIgredients.flour);
+        }
+
+        const addEggSalad = val => {
+            listOfIgredients.eggs += val.eggs;
+            listOfIgredients.mayonnaise += val.mayonnaise;
+            listOfIgredients.roll += val.roll;
+            listOfIgredients.chives += val.chives;
+        }
+
+        const addTofuPaste = val => {
+            listOfIgredients.tofu += val.tofu;
+            listOfIgredients.roll += val.roll;
+            listOfIgredients.tomato += val.tomato;
+        }
+
+        const addChickenPasta = val => {
+            listOfIgredients.onion += val.onion;
+            listOfIgredients.tomato += val.tomato;
+            listOfIgredients.pasta += val.pasta;
+            listOfIgredients.chicken += val.chicken;
+            listOfIgredients.cheese += val.cheese;
+        }
+
+        const addCheeseburger = val => {
+            listOfIgredients.onion += val.onion;
+            listOfIgredients.tomato += val.tomato;
+            listOfIgredients.roll += val.roll;
+            listOfIgredients.bacon += val.bacon;
+            listOfIgredients.beef += val.beef;
+            listOfIgredients.cheese += val.cheese;
+        }
+
+        const addPancakes = val => {
+            listOfIgredients.flour += val.flour;
+            listOfIgredients.eggs += val.eggs;
+            listOfIgredients.milk += val.milk;
+            listOfIgredients.curds += val.curds;
+            listOfIgredients.raisins += val.raisins;
+        }
+
+        const addVegeNuggets = val => {
+            listOfIgredients.sweetPotato += val.sweetPotato;
+            listOfIgredients.chickPeas += val.chickPeas;
+            listOfIgredients.breadCrumbs += val.breadCrumbs;
+            listOfIgredients.sweetPepper += val.sweetPepper;
+        }
+
+        const addChickenSalad = val => {
+            listOfIgredients.chicken += val.chicken;
+            listOfIgredients.chickPeas += val.chickPeas;
+            listOfIgredients.tomato += val.tomato;
+            listOfIgredients.cucumber += val.cucumber;
+            listOfIgredients.chives += val.chives;
+            listOfIgredients.mayonnaise += val.mayonnaise;
+        }
+
+        const addCheeseSandwich = val => {
+            listOfIgredients.cheese += val.cheese;
+            listOfIgredients.roll += val.roll;
+            listOfIgredients.tomato += val.tomato;
+            listOfIgredients.cucumber += val.cucumber;
+        }
+
+        const addTofuSalad = val => {
+            listOfIgredients.tofu += val.tofu;
+            listOfIgredients.chickPeas += val.chickPeas;
+            listOfIgredients.tomato += val.tomato;
+            listOfIgredients.cucumber += val.cucumber;
+            listOfIgredients.chives += val.chives;
+            listOfIgredients.mayonnaise += val.mayonnaise;
+        }
+
+        const addSweetPotatos = val => {
+            listOfIgredients.sweetPotato += val.sweetPotato;
+            listOfIgredients.tomato += val.tomato;
+        }
+
+        const addChips = () => {
+            listOfIgredients.chips++
+        }
+
+        const addCarrotChips = () => {
+            listOfIgredients.carrotChips++
+        }
+
+        const addChocolate = () => {
+            listOfIgredients.chocolate++
+        }
+
+        const addSticks = () => {
+            listOfIgredients.sticks++
         }
 
         function activateBreakfast() {
@@ -136,7 +247,21 @@ export default {
             activateDinner,
             activateSnack,
             addScrambledEggs,
-            addSkyrPancakes
+            addSkyrPancakes,
+            addEggSalad,
+            addTofuPaste,
+            addChickenPasta,
+            addCheeseburger,
+            addPancakes,
+            addVegeNuggets,
+            addChickenSalad,
+            addCheeseSandwich,
+            addTofuSalad,
+            addSweetPotatos,
+            addChips,
+            addCarrotChips,
+            addChocolate,
+            addSticks
         };
     }
 }

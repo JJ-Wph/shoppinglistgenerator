@@ -13,7 +13,7 @@
 import { ref } from "vue";
 export default {
     name: 'DinnerComponent',
-    setup(){
+    setup(props, {emit}) {
         const dinnerRecipes = ref([
             {
                 firstName: 'Sałatka z kurczakiem',
@@ -60,28 +60,26 @@ export default {
         ]);
 
         function addChickenSalad(){
-        console.log(dinnerRecipes.value[2].sweetPotato);
+            emit('addChickenSaladToList', dinnerRecipes.value[0]);
         }
 
         function addCheeseSandwich(){
-        console.log(dinnerRecipes.value[2].sweetPotato);
-        }
-
-        function addSweetPotatos(){
-        console.log(dinnerRecipes.value[1].sweetPotato);
+            emit('addCheeseSandwichToList', dinnerRecipes.value[1]);
         }
 
         function addTofuSalad(){
-        console.log(dinnerRecipes.value[0].sweetPotato);
+            emit('addTofuSaladToList', dinnerRecipes.value[2]);
+        }
+        function addSweetPotatos(){
+            emit('addSweetPotatosToList', dinnerRecipes.value[3]);
         }
 
         return{
             dinnerRecipes,
             addChickenSalad,
             addCheeseSandwich,
-            addTofuSalad,
             addSweetPotatos,
-            
+            addTofuSalad,
         }
     }
 }

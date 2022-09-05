@@ -13,7 +13,7 @@
 import { ref } from 'vue';
 export default {
     name: 'SnackComponent',
-    setup(){
+    setup(props, {emit}){
         const snackRecipes = ref([
             {        
                 firstName: 'Chipsy solone',
@@ -41,21 +41,22 @@ export default {
             },
         ])
 
-        function addChocolate() {
-        console.log('q3rwe');
+        function addChips() {
+            emit('addChipsToList', snackRecipes.value[0]);
         }
 
         function addCarrotChips(){
-        console.log('32rwefd');
+            emit('addCarrotChipsToList', snackRecipes.value[1]);
+        }
+
+        function addChocolate() {
+            emit('addChocolateToList', snackRecipes.value[2]);
         }
 
         function addSticks() {
-        console.log('dp');
+            emit('addSticksToList', snackRecipes.value[3]);
         }
 
-        function addChips() {
-        console.log('dpe');
-        }
 
     return { 
         snackRecipes,

@@ -13,7 +13,7 @@
 import { ref } from "vue";
 export default {
     name: 'LunchComponent',
-    setup() {
+    setup(props, {emit}) {
         const lunchRecipes = ref([
             {
                 firstName: 'Makaron z kurczakiem',
@@ -62,19 +62,19 @@ export default {
         ]);
 
         function addChickenPasta(){
-            console.log(lunchRecipes.value[2].sweetPotato);
+            emit('addChickenPastaToList', lunchRecipes.value[0]);
         }
 
         function addCheeseburger(){
-            console.log('234t5r');
+            emit('addCheeseburgerToList', lunchRecipes.value[1]);
         }
 
         function addPancakes(){
-            console.log('45trf');
+            emit('addPancakesToList', lunchRecipes.value[2]);
         }
 
         function addVegeNuggets(){
-            console.log('45trf');
+            emit('addVegeNuggetsToList', lunchRecipes.value[3]);
         }
 
         return {

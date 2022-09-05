@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="recipeDiv" v-for="recipe in breakfastRecipes" v-bind:key="recipe.id">
-      <p> Posiłek {{ recipe.id }} </p>
+      <p> Posiłek {{ recipe.vegan }} </p>
       <p> {{ recipe.firstName }} </p>
       <p> {{ recipe.typeOfMeal }} </p>
       <button @click="recipe.addMethod">Dodaj do listy</button>
@@ -11,7 +11,6 @@
 
 <script>
 import { ref } from "vue";
-
 export default {
   name: 'BreakfastComponent',
   setup(props, {emit}) {
@@ -61,19 +60,19 @@ export default {
 
 
     function addScrambledEggs(){
-      emit('addEggsToList', breakfastRecipes.value[0])
+      emit('addEggsToList', breakfastRecipes.value[0]);
     }
 
     function addSkyrPancakes(){
-      emit('addSkyrPancakesToList', breakfastRecipes.value[1])
+      emit('addSkyrPancakesToList', breakfastRecipes.value[1]);
     }
 
     function addEggSalad(){
-      console.log(breakfastRecipes.value[1].firstName);
+      emit('addEggSaladToList', breakfastRecipes.value[2]);
     }
 
     function addTofuPaste(){
-      console.log(breakfastRecipes.value[2].chives);
+      emit('addTofuPasteToList', breakfastRecipes.value[3]);
     }
 
  
