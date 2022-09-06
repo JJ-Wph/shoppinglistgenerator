@@ -10,9 +10,9 @@
         </ul>
     </nav>
     <div class="recipeDiv">
-        <div v-for="product in listOfIgredients" :key="product">
+        <template v-for="product in listOfIgredients" :key="product">
             <p v-if="product.value > 0">{{product.polishWord}}: {{product.value}}</p>
-        </div>
+        </template>
 
            
 
@@ -48,6 +48,10 @@
         @add-Carrot-Chips-To-List=addCarrotChips
         @add-Chocolate-To-List=addChocolate
         @add-Sticks-To-List=addSticks
+        @delete-Chips-From-List=deleteChips
+        @delete-Carrot-Chips-From-List=deleteCarrotChips
+        @delete-Chocolate-From-List=deleteChocolate
+        @delete-Sticks-From-List=deleteSticks
     />
 </template>
 
@@ -110,100 +114,118 @@ export default {
         }
 
         const addSkyrPancakes = val => {
-            listOfIgredients.eggs += val.eggs;
-            listOfIgredients.vanillaSkyr += val.vanillaSkyr;
-            listOfIgredients.flour += val.flour;
+            listOfIgredients.eggs.value += val.eggs;
+            listOfIgredients.vanillaSkyr.value += val.vanillaSkyr;
+            listOfIgredients.flour.value += val.flour;
         }
 
         const addEggSalad = val => {
-            listOfIgredients.eggs += val.eggs;
-            listOfIgredients.mayonnaise += val.mayonnaise;
-            listOfIgredients.roll += val.roll;
-            listOfIgredients.chives += val.chives;
+            listOfIgredients.eggs.value += val.eggs;
+            listOfIgredients.mayonnaise.value += val.mayonnaise;
+            listOfIgredients.roll.value += val.roll;
+            listOfIgredients.chives.value += val.chives;
         }
 
         const addTofuPaste = val => {
-            listOfIgredients.tofu += val.tofu;
-            listOfIgredients.roll += val.roll;
-            listOfIgredients.tomato += val.tomato;
+            listOfIgredients.tofu.value += val.tofu;
+            listOfIgredients.roll.value += val.roll;
+            listOfIgredients.tomato.value += val.tomato;
         }
 
         const addChickenPasta = val => {
-            listOfIgredients.onion += val.onion;
-            listOfIgredients.tomato += val.tomato;
-            listOfIgredients.pasta += val.pasta;
-            listOfIgredients.chicken += val.chicken;
-            listOfIgredients.cheese += val.cheese;
+            listOfIgredients.onion.value += val.onion;
+            listOfIgredients.tomato.value += val.tomato;
+            listOfIgredients.pasta.value += val.pasta;
+            listOfIgredients.chicken.value += val.chicken;
+            listOfIgredients.cheese.value += val.cheese;
         }
 
         const addCheeseburger = val => {
-            listOfIgredients.onion += val.onion;
-            listOfIgredients.tomato += val.tomato;
-            listOfIgredients.roll += val.roll;
-            listOfIgredients.bacon += val.bacon;
-            listOfIgredients.beef += val.beef;
-            listOfIgredients.cheese += val.cheese;
+            listOfIgredients.onion.value += val.onion;
+            listOfIgredients.tomato.value += val.tomato;
+            listOfIgredients.roll.value += val.roll;
+            listOfIgredients.bacon.value += val.bacon;
+            listOfIgredients.beef.value += val.beef;
+            listOfIgredients.cheese.value += val.cheese;
         }
 
         const addPancakes = val => {
-            listOfIgredients.flour += val.flour;
-            listOfIgredients.eggs += val.eggs;
-            listOfIgredients.milk += val.milk;
-            listOfIgredients.curds += val.curds;
-            listOfIgredients.raisins += val.raisins;
+            listOfIgredients.flour.value += val.flour;
+            listOfIgredients.eggs.value += val.eggs;
+            listOfIgredients.milk.value += val.milk;
+            listOfIgredients.curds.value += val.curds;
+            listOfIgredients.raisins.value += val.raisins;
         }
 
         const addVegeNuggets = val => {
-            listOfIgredients.sweetPotato += val.sweetPotato;
-            listOfIgredients.chickPeas += val.chickPeas;
-            listOfIgredients.breadCrumbs += val.breadCrumbs;
-            listOfIgredients.sweetPepper += val.sweetPepper;
+            listOfIgredients.sweetPotato.value += val.sweetPotato;
+            listOfIgredients.chickPeas.value += val.chickPeas;
+            listOfIgredients.breadCrumbs.value += val.breadCrumbs;
+            listOfIgredients.sweetPepper.value += val.sweetPepper;
         }
 
         const addChickenSalad = val => {
-            listOfIgredients.chicken += val.chicken;
-            listOfIgredients.chickPeas += val.chickPeas;
-            listOfIgredients.tomato += val.tomato;
-            listOfIgredients.cucumber += val.cucumber;
-            listOfIgredients.chives += val.chives;
-            listOfIgredients.mayonnaise += val.mayonnaise;
+            listOfIgredients.chicken.value += val.chicken;
+            listOfIgredients.chickPeas.value += val.chickPeas;
+            listOfIgredients.tomato.value += val.tomato;
+            listOfIgredients.cucumber.value += val.cucumber;
+            listOfIgredients.chives.value += val.chives;
+            listOfIgredients.mayonnaise.value += val.mayonnaise;
         }
 
         const addCheeseSandwich = val => {
-            listOfIgredients.cheese += val.cheese;
-            listOfIgredients.roll += val.roll;
-            listOfIgredients.tomato += val.tomato;
-            listOfIgredients.cucumber += val.cucumber;
+            listOfIgredients.cheese.value += val.cheese;
+            listOfIgredients.roll.value += val.roll;
+            listOfIgredients.tomato.value += val.tomato;
+            listOfIgredients.cucumber.value += val.cucumber;
         }
 
         const addTofuSalad = val => {
-            listOfIgredients.tofu += val.tofu;
-            listOfIgredients.chickPeas += val.chickPeas;
-            listOfIgredients.tomato += val.tomato;
-            listOfIgredients.cucumber += val.cucumber;
-            listOfIgredients.chives += val.chives;
-            listOfIgredients.mayonnaise += val.mayonnaise;
+            listOfIgredients.tofu.value += val.tofu;
+            listOfIgredients.chickPeas.value += val.chickPeas;
+            listOfIgredients.tomato.value += val.tomato;
+            listOfIgredients.cucumber.value += val.cucumber;
+            listOfIgredients.chives.value += val.chives;
+            listOfIgredients.mayonnaise.value += val.mayonnaise;
         }
 
         const addSweetPotatos = val => {
-            listOfIgredients.sweetPotato += val.sweetPotato;
-            listOfIgredients.tomato += val.tomato;
+            listOfIgredients.sweetPotato.value += val.sweetPotato;
+            listOfIgredients.tomato.value += val.tomato;
         }
 
         const addChips = () => {
-            listOfIgredients.chips++
+            listOfIgredients.chips.value++
         }
 
         const addCarrotChips = () => {
-            listOfIgredients.carrotChips++
+            listOfIgredients.carrotChips.value++
         }
 
         const addChocolate = () => {
-            listOfIgredients.chocolate++
+            listOfIgredients.chocolate.value++
         }
 
         const addSticks = () => {
-            listOfIgredients.sticks++
+            listOfIgredients.sticks.value++
+        }
+
+        const deleteChips = () => {
+            
+            listOfIgredients.chips.value--
+        }
+
+        const deleteCarrotChips = () => {
+            if(listOfIgredients.carrotChips.value > 0) {
+                listOfIgredients.carrotChips.value--
+        }}
+
+        const deleteChocolate = () => {
+            listOfIgredients.chocolate.value--
+        }
+
+        const deleteSticks = () => {
+            listOfIgredients.sticks.value--
         }
 
         function activateBreakfast() {
@@ -259,7 +281,11 @@ export default {
             addChips,
             addCarrotChips,
             addChocolate,
-            addSticks
+            addSticks,
+            deleteChips,
+            deleteCarrotChips,
+            deleteChocolate,
+            deleteSticks
         };
     }
 }
