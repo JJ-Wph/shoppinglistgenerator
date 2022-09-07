@@ -30,7 +30,7 @@ body {
 
 #app {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   font-family: 'Noto Sans', sans-serif;
   width: 100%;
   height: 100%;

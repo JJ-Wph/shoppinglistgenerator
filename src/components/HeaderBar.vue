@@ -464,20 +464,35 @@ export default {
         justify-content: space-between;
         flex-direction: column;
         align-items: center;
-        padding: 15px 10%;
+        width: 20%;
+        background-color: rgb(63, 63, 63);
+        background: linear-gradient(to bottom right, red, rgb(63, 63, 63), rgb(63, 63, 63));
+        color: rgb(175, 4, 4);
     }
 
     h3 {
         cursor: pointer;
     }
 
-    ul {
-        list-style: none;
+    nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 
+    ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        list-style: none;
+        padding: 0;
     }
 
     li {
-        display: inline-block;
-        padding: 0px 50px;
+        cursor: pointer;
+        margin: 15%;
+        border: 2px black solid;
     }
 </style>

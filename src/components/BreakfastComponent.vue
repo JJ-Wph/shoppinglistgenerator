@@ -146,7 +146,7 @@ export default {
   width: 20vw;
   height: 30vh;
   border: 1px solid green;
-
+  background: linear-gradient(to top right, red, rgb(63, 63, 63), rgb(63, 63, 63), rgb(63, 63, 63));
 }
 
 
