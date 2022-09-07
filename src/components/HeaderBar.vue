@@ -24,6 +24,10 @@
         @add-skyr-pancakes-to-list=addSkyrPancakes
         @add-Egg-Salad-To-List=addEggSalad
         @add-Tofu-Paste-To-List=addTofuPaste
+        @delete-Scrambled-Eggs-From-List=deleteScrambledEggs
+        @delete-Skyr-Pancakes-From-List=deleteSkyrPancakes
+        @delete-Egg-Salad-From-List=deleteEggSalad
+        @delete-Tofu-Paste-From-List=deleteTofuPaste
     />
 
     <LunchComponent 
@@ -32,6 +36,10 @@
         @add-Cheeseburger-To-List=addCheeseburger
         @add-Pancakes-To-List=addPancakes
         @add-Vege-Nuggets=addVegeNuggets
+        @delete-Chicken-Pasta-From-List=deleteChickenPasta
+        @delete-Cheeseburger-From-List=deleteCheeseburger
+        @delete-Pancakes-From-List=deletePancakes
+        @delete-Vege-Nuggets-From-List=deleteVegeNuggets
     />
 
     <DinnerComponent 
@@ -40,6 +48,10 @@
         @add-Cheese-Sandwich-To-List=addCheeseSandwich
         @add-Tofu-Salad-To-List=addTofuSalad
         @add-Sweet-Potatos-To-List=addSweetPotatos
+        @delete-Chicken-Salad=deleteChickenSalad
+        @delete-Cheese-Sandwich=deleteCheeseSandwich
+        @delete-Tofu-Salad=deleteTofuSalad
+        @delete-Sweet-Potatos=deleteSweetPotatos
     />
 
     <SnackComponent 
@@ -106,6 +118,7 @@ export default {
     });
 
         const addScrambledEggs = val => {
+            val.count++
             listOfIgredients.eggs.value += val.eggs;
             listOfIgredients.onion.value += val.onion;
             listOfIgredients.bacon.value += val.bacon;
@@ -114,12 +127,14 @@ export default {
         }
 
         const addSkyrPancakes = val => {
+            val.count++
             listOfIgredients.eggs.value += val.eggs;
             listOfIgredients.vanillaSkyr.value += val.vanillaSkyr;
             listOfIgredients.flour.value += val.flour;
         }
 
         const addEggSalad = val => {
+            val.count++
             listOfIgredients.eggs.value += val.eggs;
             listOfIgredients.mayonnaise.value += val.mayonnaise;
             listOfIgredients.roll.value += val.roll;
@@ -127,9 +142,49 @@ export default {
         }
 
         const addTofuPaste = val => {
+            val.count++
             listOfIgredients.tofu.value += val.tofu;
             listOfIgredients.roll.value += val.roll;
             listOfIgredients.tomato.value += val.tomato;
+        }
+
+        const deleteScrambledEggs = val => {
+            if(val.count > 0) {
+                val.count--;
+                listOfIgredients.eggs.value -= val.eggs;
+                listOfIgredients.onion.value -= val.onion;
+                listOfIgredients.bacon.value -= val.bacon;
+                listOfIgredients.roll.value -= val.roll;
+                listOfIgredients.tomato.value -= val.tomato;
+            }
+        }
+
+        const deleteSkyrPancakes = val => {
+            if(val.count > 0) {
+                val.count--;
+                listOfIgredients.eggs.value -= val.eggs;
+                listOfIgredients.vanillaSkyr.value -= val.vanillaSkyr;
+                listOfIgredients.flour.value -= val.flour;
+            }
+        }
+
+        const deleteEggSalad = val => {
+            if(val.count > 0) {
+                val.count--;
+                listOfIgredients.eggs.value -= val.eggs;
+                listOfIgredients.mayonnaise.value -= val.mayonnaise;
+                listOfIgredients.roll.value -= val.roll;
+                listOfIgredients.chives.value -= val.chives;
+            }
+        }
+
+        const deleteTofuPaste = val => {
+            if(val.count > 0) {
+                val.count--;
+                listOfIgredients.tofu.value -= val.tofu;
+                listOfIgredients.roll.value -= val.roll;
+                listOfIgredients.tomato.value -= val.tomato;
+            }
         }
 
         const addChickenPasta = val => {
@@ -164,6 +219,50 @@ export default {
             listOfIgredients.sweetPepper.value += val.sweetPepper;
         }
 
+        const deleteChickenPasta = val => {
+            if(val.count > 0) {
+                val.count--;
+                listOfIgredients.onion.value -= val.onion;
+                listOfIgredients.tomato.value -= val.tomato;
+                listOfIgredients.pasta.value -= val.pasta;
+                listOfIgredients.chicken.value -= val.chicken;
+                listOfIgredients.cheese.value -= val.cheese;
+            }
+        }
+
+        const deleteCheeseburger = val => {
+            if(val.count > 0) {
+                val.count--;
+                listOfIgredients.onion.value -= val.onion;
+                listOfIgredients.tomato.value -= val.tomato;
+                listOfIgredients.roll.value -= val.roll;
+                listOfIgredients.bacon.value -= val.bacon;
+                listOfIgredients.beef.value -= val.beef;
+                listOfIgredients.cheese.value -= val.cheese;
+            }
+        }
+
+        const deletePancakes = val => {
+            if(val.count > 0) {
+                val.count--;
+                listOfIgredients.flour.value -= val.flour;
+                listOfIgredients.eggs.value -= val.eggs;
+                listOfIgredients.milk.value -= val.milk;
+                listOfIgredients.curds.value -= val.curds;
+                listOfIgredients.raisins.value -= val.raisins;
+            }
+        }
+
+        const deleteVegeNuggets = val => {
+            if(val.count > 0) {
+                val.count--;
+                listOfIgredients.sweetPotato.value += val.sweetPotato;
+                listOfIgredients.chickPeas.value += val.chickPeas;
+                listOfIgredients.breadCrumbs.value += val.breadCrumbs;
+                listOfIgredients.sweetPepper.value += val.sweetPepper;
+            }
+        }
+
         const addChickenSalad = val => {
             listOfIgredients.chicken.value += val.chicken;
             listOfIgredients.chickPeas.value += val.chickPeas;
@@ -194,6 +293,56 @@ export default {
             listOfIgredients.tomato.value += val.tomato;
         }
 
+
+
+
+        const deleteChickenSalad = val => {
+            if(val.count > 0) {
+                val.count--;
+                listOfIgredients.chicken.value += val.chicken;
+                listOfIgredients.chickPeas.value += val.chickPeas;
+                listOfIgredients.tomato.value += val.tomato;
+                listOfIgredients.cucumber.value += val.cucumber;
+                listOfIgredients.chives.value += val.chives;
+                listOfIgredients.mayonnaise.value += val.mayonnaise;
+            }
+        }
+
+        const deleteCheeseSandwich = val => {
+            if(val.count > 0) {
+                val.count--;
+                listOfIgredients.cheese.value -= val.cheese;
+                listOfIgredients.roll.value -= val.roll;
+                listOfIgredients.tomato.value -= val.tomato;
+                listOfIgredients.cucumber.value -= val.cucumber;
+            }
+        }
+
+        const deleteTofuSalad = val => {
+            if(val.count > 0) {
+                val.count--;
+                listOfIgredients.tofu.value -= val.tofu;
+                listOfIgredients.chickPeas.value -= val.chickPeas;
+                listOfIgredients.tomato.value -= val.tomato;
+                listOfIgredients.cucumber.value -= val.cucumber;
+                listOfIgredients.chives.value -= val.chives;
+                listOfIgredients.mayonnaise.value -= val.mayonnaise;
+            }
+        }
+
+        const deleteSweetPotatos = val => {
+            if(val.count > 0) {
+                val.count--;
+                listOfIgredients.sweetPotato.value -= val.sweetPotato;
+                listOfIgredients.tomato.value -= val.tomato;
+            }
+        }
+
+
+
+
+
+
         const addChips = () => {
             listOfIgredients.chips.value++
         }
@@ -211,21 +360,27 @@ export default {
         }
 
         const deleteChips = () => {
-            
-            listOfIgredients.chips.value--
+            if(listOfIgredients.chips.value > 0) {
+                listOfIgredients.chips.value--
+            }
         }
 
         const deleteCarrotChips = () => {
             if(listOfIgredients.carrotChips.value > 0) {
                 listOfIgredients.carrotChips.value--
-        }}
+            }
+        }
 
         const deleteChocolate = () => {
-            listOfIgredients.chocolate.value--
+            if(listOfIgredients.chocolate.value > 0) {
+                listOfIgredients.chocolate.value--
+            }
         }
 
         const deleteSticks = () => {
-            listOfIgredients.sticks.value--
+            if(listOfIgredients.sticks.value > 0) {
+                listOfIgredients.sticks.value--
+            }
         }
 
         function activateBreakfast() {
@@ -267,24 +422,36 @@ export default {
             activateDinner,
             activateSnack,
             addScrambledEggs,
+            deleteScrambledEggs,
             addSkyrPancakes,
+            deleteSkyrPancakes,
             addEggSalad,
+            deleteEggSalad,
             addTofuPaste,
+            deleteTofuPaste,
             addChickenPasta,
+            deleteChickenPasta,
             addCheeseburger,
+            deleteCheeseburger,
             addPancakes,
+            deletePancakes,
             addVegeNuggets,
+            deleteVegeNuggets,
             addChickenSalad,
+            deleteChickenSalad,
             addCheeseSandwich,
+            deleteCheeseSandwich,
             addTofuSalad,
+            deleteTofuSalad,
             addSweetPotatos,
+            deleteSweetPotatos,
             addChips,
-            addCarrotChips,
-            addChocolate,
-            addSticks,
             deleteChips,
+            addCarrotChips,
             deleteCarrotChips,
+            addChocolate,
             deleteChocolate,
+            addSticks,
             deleteSticks
         };
     }

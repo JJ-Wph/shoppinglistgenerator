@@ -1,10 +1,11 @@
 <template>
     <div class="container">
         <div class="recipeDiv" v-for="recipe in lunchRecipes" v-bind:key="recipe.firstName">
-            <p> Posiłek {{ recipe.vegan }} </p>
+            <p v-if="recipe.vegan">Posiłek &#127807;</p>
             <p> {{ recipe.firstName }} </p>
             <p> {{ recipe.typeOfMeal }} </p>
             <button @click="recipe.addMethod">Dodaj do listy</button>
+            <button @click="recipe.deleteMethod"></button>
         </div>
     </div>
 </template>
@@ -20,6 +21,8 @@ export default {
                 typeOfMeal: 'obiad',
                 vegan: false,
                 addMethod: addChickenPasta,
+                deleteMethod: deleteChickenPasta,
+                count: 0,
                 onion: 20,
                 tomato: 200,
                 pasta: 200,
@@ -31,6 +34,8 @@ export default {
                 typeOfMeal: 'obiad',
                 vegan: false,
                 addMethod: addCheeseburger,
+                deleteMethod: deleteCheeseburger,
+                count: 0,
                 onion: 20,
                 tomato: 100,
                 roll: 1,
@@ -43,6 +48,8 @@ export default {
                 typeOfMeal: 'obiad',
                 vegan: false,
                 addMethod: addPancakes,
+                deleteMethod: deletePancakes,
+                count: 0,
                 flour: 130,
                 eggs: 1,
                 milk: 250,
@@ -54,6 +61,8 @@ export default {
                 typeOfMeal: 'obiad',
                 vegan: true,
                 addMethod: addVegeNuggets,
+                deleteMethod: deleteVegeNuggets,
+                count: 0,
                 sweetPotato: 500,
                 chickPeas: 240,
                 breadCrumbs: 100,
@@ -77,12 +86,32 @@ export default {
             emit('addVegeNuggetsToList', lunchRecipes.value[3]);
         }
 
+        function deleteChickenPasta(){
+            emit('deleteChickenPastaFromList', lunchRecipes.value[0]);
+        }
+
+        function deleteCheeseburger(){
+            emit('deleteCheeseburgerFromList', lunchRecipes.value[1]);
+        }
+
+        function deletePancakes(){
+            emit('deletePancakesFromList', lunchRecipes.value[2]);
+        }
+
+        function deleteVegeNuggets(){
+            emit('deleteVegeNuggetsFromList', lunchRecipes.value[3]);
+        }
+
         return {
             lunchRecipes,
             addChickenPasta,
             addCheeseburger,
             addPancakes,
-            addVegeNuggets
+            addVegeNuggets,
+            deleteChickenPasta,
+            deleteCheeseburger,
+            deletePancakes,
+            deleteVegeNuggets
         }
 
 

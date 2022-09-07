@@ -1,10 +1,12 @@
 <template>
   <div class="container">
     <div class="recipeDiv" v-for="recipe in breakfastRecipes" v-bind:key="recipe.id">
-      <p> Posiłek {{ recipe.vegan }} </p>
+      <p v-if="recipe.vegan">Posiłek &#127807;</p>
       <p> {{ recipe.firstName }} </p>
       <p> {{ recipe.typeOfMeal }} </p>
+      <p v-if="recipe.count > 0"> {{ recipe.count }} </p>
       <button @click="recipe.addMethod">Dodaj do listy</button>
+      <button @click="recipe.deleteMethod">Usuń z listy</button>
     </div>
   </div>
 </template>
@@ -20,6 +22,8 @@ export default {
         typeOfMeal: 'śniadanie',
         vegan: false,
         addMethod: addScrambledEggs,
+        deleteMethod: deleteScrambledEggs,
+        count: 0,
         eggs: 4,
         onion: 40,
         bacon: 100,
@@ -31,6 +35,8 @@ export default {
         typeOfMeal: 'śniadanie',
         vegan: false,
         addMethod: addSkyrPancakes,
+        deleteMethod: deleteSkyrPancakes,
+        count: 0,
         eggs: 1,
         vanillaSkyr: 150,
         flour: 40,
@@ -40,6 +46,8 @@ export default {
         typeOfMeal: 'śniadanie',
         vegan: false,
         addMethod: addEggSalad,
+        deleteMethod: deleteEggSalad,
+        count: 0,
         eggs: 2,
         mayonnaise: 50,
         roll: 1,
@@ -50,6 +58,8 @@ export default {
         typeOfMeal: 'śniadanie',
         vegan: true,
         addMethod: addTofuPaste,
+        deleteMethod: deleteTofuPaste,
+        count: 0,
         tofu: 200,
         roll: 1,
         tomato: 50,      
@@ -75,6 +85,21 @@ export default {
       emit('addTofuPasteToList', breakfastRecipes.value[3]);
     }
 
+    function deleteScrambledEggs() {
+      emit('deleteScrambledEggsFromList', breakfastRecipes.value[0]);
+    }
+
+    function deleteSkyrPancakes() {
+      emit('deleteSkyrPancakesFromList', breakfastRecipes.value[1]);
+    }
+
+    function deleteEggSalad() {
+      emit('deleteEggSaladFromList', breakfastRecipes.value[2]);
+    }
+
+    function deleteTofuPaste() {
+      emit('deleteTofuPasteFromList', breakfastRecipes.value[3]);
+    }
  
 
 
@@ -87,6 +112,10 @@ export default {
       addTofuPaste,
       addSkyrPancakes,
       addEggSalad,
+      deleteScrambledEggs,
+      deleteSkyrPancakes,
+      deleteEggSalad,
+      deleteTofuPaste
       }
   }
 };
