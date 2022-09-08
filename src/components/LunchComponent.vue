@@ -4,8 +4,9 @@
             <p v-if="recipe.vegan">Posiłek &#127807;</p>
             <p> {{ recipe.firstName }} </p>
             <p> {{ recipe.typeOfMeal }} </p>
+            <p v-if="recipe.count > 0"> {{ recipe.count }} </p>
             <button @click="recipe.addMethod">Dodaj do listy</button>
-            <button @click="recipe.deleteMethod"></button>
+            <button @click="recipe.deleteMethod">Usuń z listy</button>
         </div>
     </div>
 </template>
@@ -111,7 +112,7 @@ export default {
             deleteChickenPasta,
             deleteCheeseburger,
             deletePancakes,
-            deleteVegeNuggets
+            deleteVegeNuggets,
         }
 
 

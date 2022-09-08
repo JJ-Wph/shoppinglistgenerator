@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <div class="recipeDiv" v-for="recipe in breakfastRecipes" v-bind:key="recipe.id">
-      <p v-if="recipe.vegan">Posiłek &#127807;</p>
+    <div class="recipeDiv" v-for="recipe in breakfastRecipes" v-bind:key="recipe.firstName">
+      <p v-if="recipe.vegan">&#127807;</p>
       <p> {{ recipe.firstName }} </p>
       <p> {{ recipe.typeOfMeal }} </p>
       <p v-if="recipe.count > 0"> {{ recipe.count }} </p>
@@ -146,7 +146,7 @@ export default {
   width: 20vw;
   height: 30vh;
   border: 1px solid green;
-  background: linear-gradient(to top right, red, rgb(63, 63, 63), rgb(63, 63, 63), rgb(63, 63, 63));
+  /* background: linear-gradient(to top right, red, rgb(63, 63, 63), rgb(63, 63, 63), rgb(63, 63, 63)); */
 }
 
 

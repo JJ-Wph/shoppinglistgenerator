@@ -19,7 +19,7 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
 
 body {
   margin: 0;
@@ -31,7 +31,7 @@ body {
 #app {
   display: flex;
   flex-direction: row;
-  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Oswald', sans-serif;
   width: 100%;
   height: 100%;
   margin: 0;

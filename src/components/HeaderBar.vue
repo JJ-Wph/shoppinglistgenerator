@@ -9,17 +9,17 @@
             <li @click="activateSnack">Przekąski</li>
         </ul>
     </nav>
-    <div class="recipeDiv">
+    <div class="listDiv">
         <template v-for="product in listOfIgredients" :key="product">
             <p v-if="product.value > 0">{{product.polishWord}}: {{product.value}}</p>
         </template>
-
+        <button>dupa dupa</button>
            
 
     </div>
   </header>
     <BreakfastComponent 
-        v-if="isBreakfastActive" 
+        v-show="isBreakfastActive" 
         @add-eggs-to-list=addScrambledEggs
         @add-skyr-pancakes-to-list=addSkyrPancakes
         @add-Egg-Salad-To-List=addEggSalad
@@ -31,11 +31,11 @@
     />
 
     <LunchComponent 
-        v-if="isLunchActive"
+        v-show="isLunchActive"
         @add-Chicken-Pasta-To-List=addChickenPasta
         @add-Cheeseburger-To-List=addCheeseburger
         @add-Pancakes-To-List=addPancakes
-        @add-Vege-Nuggets=addVegeNuggets
+        @add-Vege-Nuggets-To-List=addVegeNuggets
         @delete-Chicken-Pasta-From-List=deleteChickenPasta
         @delete-Cheeseburger-From-List=deleteCheeseburger
         @delete-Pancakes-From-List=deletePancakes
@@ -43,19 +43,19 @@
     />
 
     <DinnerComponent 
-        v-if="isDinnerActive"
+        v-show="isDinnerActive"
         @add-Chicken-Salad-To-List=addChickenSalad
         @add-Cheese-Sandwich-To-List=addCheeseSandwich
         @add-Tofu-Salad-To-List=addTofuSalad
         @add-Sweet-Potatos-To-List=addSweetPotatos
-        @delete-Chicken-Salad=deleteChickenSalad
-        @delete-Cheese-Sandwich=deleteCheeseSandwich
-        @delete-Tofu-Salad=deleteTofuSalad
-        @delete-Sweet-Potatos=deleteSweetPotatos
+        @delete-Chicken-Salad-From-List=deleteChickenSalad
+        @delete-Cheese-Sandwich-From-List=deleteCheeseSandwich
+        @delete-Tofu-Salad-From-List=deleteTofuSalad
+        @delete-Sweet-Potatos-From-List=deleteSweetPotatos
     />
 
     <SnackComponent 
-        v-if="isSnackActive"
+        v-show="isSnackActive"
         @add-Chips-To-List=addChips
         @add-Carrot-Chips-To-List=addCarrotChips
         @add-Chocolate-To-List=addChocolate
@@ -188,6 +188,7 @@ export default {
         }
 
         const addChickenPasta = val => {
+            val.count++
             listOfIgredients.onion.value += val.onion;
             listOfIgredients.tomato.value += val.tomato;
             listOfIgredients.pasta.value += val.pasta;
@@ -196,6 +197,7 @@ export default {
         }
 
         const addCheeseburger = val => {
+            val.count++
             listOfIgredients.onion.value += val.onion;
             listOfIgredients.tomato.value += val.tomato;
             listOfIgredients.roll.value += val.roll;
@@ -205,6 +207,7 @@ export default {
         }
 
         const addPancakes = val => {
+            val.count++
             listOfIgredients.flour.value += val.flour;
             listOfIgredients.eggs.value += val.eggs;
             listOfIgredients.milk.value += val.milk;
@@ -213,6 +216,7 @@ export default {
         }
 
         const addVegeNuggets = val => {
+            val.count++
             listOfIgredients.sweetPotato.value += val.sweetPotato;
             listOfIgredients.chickPeas.value += val.chickPeas;
             listOfIgredients.breadCrumbs.value += val.breadCrumbs;
@@ -256,14 +260,15 @@ export default {
         const deleteVegeNuggets = val => {
             if(val.count > 0) {
                 val.count--;
-                listOfIgredients.sweetPotato.value += val.sweetPotato;
-                listOfIgredients.chickPeas.value += val.chickPeas;
-                listOfIgredients.breadCrumbs.value += val.breadCrumbs;
-                listOfIgredients.sweetPepper.value += val.sweetPepper;
+                listOfIgredients.sweetPotato.value -= val.sweetPotato;
+                listOfIgredients.chickPeas.value -= val.chickPeas;
+                listOfIgredients.breadCrumbs.value -= val.breadCrumbs;
+                listOfIgredients.sweetPepper.value -= val.sweetPepper;
             }
         }
 
         const addChickenSalad = val => {
+            val.count++
             listOfIgredients.chicken.value += val.chicken;
             listOfIgredients.chickPeas.value += val.chickPeas;
             listOfIgredients.tomato.value += val.tomato;
@@ -273,6 +278,7 @@ export default {
         }
 
         const addCheeseSandwich = val => {
+            val.count++
             listOfIgredients.cheese.value += val.cheese;
             listOfIgredients.roll.value += val.roll;
             listOfIgredients.tomato.value += val.tomato;
@@ -280,6 +286,7 @@ export default {
         }
 
         const addTofuSalad = val => {
+            val.count++
             listOfIgredients.tofu.value += val.tofu;
             listOfIgredients.chickPeas.value += val.chickPeas;
             listOfIgredients.tomato.value += val.tomato;
@@ -289,6 +296,7 @@ export default {
         }
 
         const addSweetPotatos = val => {
+            val.count++
             listOfIgredients.sweetPotato.value += val.sweetPotato;
             listOfIgredients.tomato.value += val.tomato;
         }
@@ -299,12 +307,12 @@ export default {
         const deleteChickenSalad = val => {
             if(val.count > 0) {
                 val.count--;
-                listOfIgredients.chicken.value += val.chicken;
-                listOfIgredients.chickPeas.value += val.chickPeas;
-                listOfIgredients.tomato.value += val.tomato;
-                listOfIgredients.cucumber.value += val.cucumber;
-                listOfIgredients.chives.value += val.chives;
-                listOfIgredients.mayonnaise.value += val.mayonnaise;
+                listOfIgredients.chicken.value -= val.chicken;
+                listOfIgredients.chickPeas.value -= val.chickPeas;
+                listOfIgredients.tomato.value -= val.tomato;
+                listOfIgredients.cucumber.value -= val.cucumber;
+                listOfIgredients.chives.value -= val.chives;
+                listOfIgredients.mayonnaise.value -= val.mayonnaise;
             }
         }
 
@@ -466,8 +474,8 @@ export default {
         align-items: center;
         width: 20%;
         background-color: rgb(63, 63, 63);
-        background: linear-gradient(to bottom right, red, rgb(63, 63, 63), rgb(63, 63, 63));
-        color: rgb(175, 4, 4);
+        /* background: linear-gradient(to bottom right, red, rgb(63, 63, 63), rgb(63, 63, 63)); */
+        color: rgb(190, 45, 45);
     }
 
     h3 {
@@ -494,5 +502,13 @@ export default {
         cursor: pointer;
         margin: 15%;
         border: 2px black solid;
+    }
+
+    .listDiv {
+        padding: 0;
+    }
+
+    .listDiv > p {
+        padding: 0;
     }
 </style>

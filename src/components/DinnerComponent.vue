@@ -4,6 +4,7 @@
             <p v-if="recipe.vegan"> &#127807;</p>
             <p> {{ recipe.firstName }} </p>
             <p> {{ recipe.typeOfMeal }} </p>
+            <p v-if="recipe.count > 0"> {{ recipe.count }} </p>
             <button @click="recipe.addMethod">Dodaj do listy</button>
             <button @click="recipe.deleteMethod">Usuń z listy</button>
         </div>
@@ -85,19 +86,19 @@ export default {
         }
 
         function deleteChickenSalad(){
-            emit('deleteChickenSaladToList', dinnerRecipes.value[0]);
+            emit('deleteChickenSaladFromList', dinnerRecipes.value[0]);
         }
 
         function deleteCheeseSandwich(){
-            emit('deleteCheeseSandwichToList', dinnerRecipes.value[1]);
+            emit('deleteCheeseSandwichFromList', dinnerRecipes.value[1]);
         }
 
         function deleteTofuSalad(){
-            emit('deleteTofuSaladToList', dinnerRecipes.value[2]);
+            emit('deleteTofuSaladFromList', dinnerRecipes.value[2]);
         }
 
         function deleteSweetPotatos(){
-            emit('deleteSweetPotatosToList', dinnerRecipes.value[3]);
+            emit('deleteSweetPotatosFromList', dinnerRecipes.value[3]);
         }
  
 
