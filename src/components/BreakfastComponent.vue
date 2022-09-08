@@ -124,28 +124,17 @@ export default {
 
 <style>
 
-.container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
 
-}
 
 .recipeDiv {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
   margin: 2vh;
   width: 20vw;
   height: 30vh;
-  border: 1px solid green;
+  border: 1px solid green; */
   /* background: linear-gradient(to top right, red, rgb(63, 63, 63), rgb(63, 63, 63), rgb(63, 63, 63)); */
 }
 

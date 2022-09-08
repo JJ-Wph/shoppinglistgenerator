@@ -1,24 +1,25 @@
 <template>
-  <header>
-    <h3>Shopping List Generator</h3>
-    <nav>
-        <ul>
-            <li @click="activateBreakfast">Śniadania</li>
-            <li @click="activateLunch">Obiady</li>
-            <li @click="activateDinner">Kolacje</li>
-            <li @click="activateSnack">Przekąski</li>
-        </ul>
-    </nav>
-    <div class="listDiv">
+    <header>
+        <h2>Shopping List Generator</h2>
+        <nav>
+            <ul>
+                <li @click="activateBreakfast">Śniadania</li>
+                <li @click="activateLunch">Obiady</li>
+                <li @click="activateDinner">Kolacje</li>
+                <li @click="activateSnack">Przekąski</li>
+            </ul>
+        </nav>
+    </header>
+    <div class="listDiv" id="listDivToPDF">
+        <h3>Lista Zakupów</h3>
         <template v-for="product in listOfIgredients" :key="product">
-            <p v-if="product.value > 0">{{product.polishWord}}: {{product.value}}</p>
+            <p v-if="product.value > 0">{{product.polishWord}}: {{product.value}} {{product.unit}}</p>
         </template>
-        <button>dupa dupa</button>
-           
-
+        <button @click="exportToPDF">Zapisz jako PDF</button>
     </div>
-  </header>
+
     <BreakfastComponent 
+        class="section"
         v-show="isBreakfastActive" 
         @add-eggs-to-list=addScrambledEggs
         @add-skyr-pancakes-to-list=addSkyrPancakes
@@ -31,6 +32,7 @@
     />
 
     <LunchComponent 
+        class="section"
         v-show="isLunchActive"
         @add-Chicken-Pasta-To-List=addChickenPasta
         @add-Cheeseburger-To-List=addCheeseburger
@@ -43,6 +45,7 @@
     />
 
     <DinnerComponent 
+        class="section"
         v-show="isDinnerActive"
         @add-Chicken-Salad-To-List=addChickenSalad
         @add-Cheese-Sandwich-To-List=addCheeseSandwich
@@ -55,6 +58,7 @@
     />
 
     <SnackComponent 
+        class="section"
         v-show="isSnackActive"
         @add-Chips-To-List=addChips
         @add-Carrot-Chips-To-List=addCarrotChips
@@ -72,6 +76,7 @@ import BreakfastComponent from './BreakfastComponent.vue'
 import LunchComponent from './LunchComponent.vue'
 import DinnerComponent from './DinnerComponent.vue'
 import SnackComponent from './SnackComponent.vue'
+import html2pdf from 'html2pdf.js'
 
 import {reactive, ref} from 'vue'
 export default {
@@ -89,32 +94,32 @@ export default {
         const isSnackActive = ref(false);
 
         const listOfIgredients = reactive({
-            onion:{ value: 0, polishWord: 'cebula'},
-            tomato:{ value: 0, polishWord: 'pomidor'},
-            roll:{ value: 0, polishWord: 'bułka'},
-            bacon: { value: 0, polishWord: 'bekon'},
-            cheese: { value: 0, polishWord: 'ser żółty'},
-            eggs: { value: 0, polishWord: 'jaja'},
-            beef: { value: 0, polishWord: 'wołowina'},
-            flour: { value: 0, polishWord: 'mąka'},
-            milk: { value: 0, polishWord: 'mleko'},
-            curds: { value: 0, polishWord: 'serek wiejski'},
-            raisins: { value: 0, polishWord: 'rodzynki'},
-            vanillaSkyr: { value: 0, polishWord: 'skyr waniliowy'},
-            mayonnaise: { value: 0, polishWord: 'majonez'},
-            chives: { value: 0, polishWord: 'szczypiorek'},
-            tofu: { value: 0, polishWord: 'tofu'},
-            pasta: { value: 0, polishWord: 'makaron'},
-            chicken: { value: 0, polishWord: 'pierś z kurczaka'},
-            sweetPotato: { value: 0, polishWord: 'batat'},
-            chickPeas: { value: 0, polishWord: 'ciecierzyca'},
-            breadCrumbs: { value: 0, polishWord: 'bułka tarta'},
-            sweetPepper: { value: 0, polishWord: 'papryka słodka'},
-            cucumber: { value: 0, polishWord: 'ogórek'},
-            chips: { value: 0, polishWord: 'chipsy'},
-            carrotChips: { value: 0, polishWord: 'chipsy marchewkowe'},
-            chocolate: { value: 0, polishWord: 'czekolada'},
-            sticks: { value: 0, polishWord: 'paluszki'},
+            onion:{ value: 0, polishWord: 'cebula', unit: 'g'},
+            tomato:{ value: 0, polishWord: 'pomidory', unit: 'g'},
+            roll:{ value: 0, polishWord: 'bułki', unit: 'szt.'},
+            bacon: { value: 0, polishWord: 'bekon', unit: 'g'}, 
+            cheese: { value: 0, polishWord: 'ser żółty', unit: 'g'},
+            eggs: { value: 0, polishWord: 'jaja', unit: 'szt.'},
+            beef: { value: 0, polishWord: 'wołowina', unit: 'g'},
+            flour: { value: 0, polishWord: 'mąka', unit: 'g'},
+            milk: { value: 0, polishWord: 'mleko', unit: 'ml'},
+            curds: { value: 0, polishWord: 'serek wiejski', unit: 'g'},
+            raisins: { value: 0, polishWord: 'rodzynki', unit: 'g'},
+            vanillaSkyr: { value: 0, polishWord: 'skyr waniliowy', unit: 'g'},
+            mayonnaise: { value: 0, polishWord: 'majonez', unit: 'g'},
+            chives: { value: 0, polishWord: 'szczypiorek', unit: 'g'},
+            tofu: { value: 0, polishWord: 'tofu', unit: 'g'},
+            pasta: { value: 0, polishWord: 'makaron', unit: 'g'},
+            chicken: { value: 0, polishWord: 'pierś z kurczaka', unit: 'g'},
+            sweetPotato: { value: 0, polishWord: 'bataty', unit: 'g'},
+            chickPeas: { value: 0, polishWord: 'ciecierzyca', unit: 'g'},
+            breadCrumbs: { value: 0, polishWord: 'bułka tarta', unit: 'g'},
+            sweetPepper: { value: 0, polishWord: 'papryka słodka', unit: 'g'},
+            cucumber: { value: 0, polishWord: 'ogórki', unit: 'g'},
+            chips: { value: 0, polishWord: 'chipsy', unit: 'op.'},
+            carrotChips: { value: 0, polishWord: 'chipsy marchewkowe', unit: 'op.'},
+            chocolate: { value: 0, polishWord: 'czekolada', unit: 'op.'},
+            sticks: { value: 0, polishWord: 'paluszki', unit: 'op.'},
     });
 
         const addScrambledEggs = val => {
@@ -419,6 +424,13 @@ export default {
             isSnackActive.value = true;
         }
 
+        function exportToPDF() {
+            html2pdf(document.getElementById('listDivToPDF'), {
+                margin: 2,
+                filename: "lista zakupów.pdf",
+            });
+        }
+
         return { 
             isBreakfastActive, 
             isLunchActive, 
@@ -460,7 +472,8 @@ export default {
             addChocolate,
             deleteChocolate,
             addSticks,
-            deleteSticks
+            deleteSticks,
+            exportToPDF
         };
     }
 }
@@ -468,14 +481,13 @@ export default {
 
 <style scoped>
     header {
-        display: flex;
-        justify-content: space-between;
-        flex-direction: column;
-        align-items: center;
-        width: 20%;
+        grid-area: 1 / 2 / 2 / 7;
         background-color: rgb(63, 63, 63);
         /* background: linear-gradient(to bottom right, red, rgb(63, 63, 63), rgb(63, 63, 63)); */
-        color: rgb(190, 45, 45);
+    }
+
+    h2 {
+        margin: 0;
     }
 
     h3 {
@@ -484,14 +496,14 @@ export default {
 
     nav {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
         justify-content: center;
     }
 
     ul {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
         justify-content: center;
         list-style: none;
@@ -500,15 +512,34 @@ export default {
 
     li {
         cursor: pointer;
-        margin: 15%;
+        margin: 5%;
         border: 2px black solid;
     }
 
     .listDiv {
+        grid-area: 1 / 1 / 7 / 2;
+        background-color: rgb(63, 63, 63);
         padding: 0;
+        /* display:flex;
+         border:3px solid black;
+         flex-direction:column;
+         flex-wrap:wrap;
+         width: 80%;
+         height: 100%; */
+
     }
 
     .listDiv > p {
-        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        flex-flow: column wrap;
+        margin: 0;
     }
+
+    .section {
+        grid-area: 2 / 2 / 7 / 7;
+
+
+    }
+
 </style>

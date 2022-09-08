@@ -21,26 +21,29 @@ export default {
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
 
-body {
+html, body {
   margin: 0;
   padding: 0;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
 }
 
 #app {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
   font-family: 'Oswald', sans-serif;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: lightblue;
   text-align: center;
   background-color: darkgrey;
+  color: rgb(190, 45, 45);
 };
 
 
