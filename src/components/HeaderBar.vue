@@ -482,7 +482,7 @@ export default {
 <style scoped>
     header {
         grid-area: 1 / 2 / 2 / 7;
-        background-color: rgb(63, 63, 63);
+        background-color: rgb(37, 36, 36);
         /* background: linear-gradient(to bottom right, red, rgb(63, 63, 63), rgb(63, 63, 63)); */
     }
 
@@ -518,15 +518,8 @@ export default {
 
     .listDiv {
         grid-area: 1 / 1 / 7 / 2;
-        background-color: rgb(63, 63, 63);
+        background-color: rgb(37, 36, 36);
         padding: 0;
-        /* display:flex;
-         border:3px solid black;
-         flex-direction:column;
-         flex-wrap:wrap;
-         width: 80%;
-         height: 100%; */
-
     }
 
     .listDiv > p {

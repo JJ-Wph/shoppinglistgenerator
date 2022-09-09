@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <div class="recipeDiv" v-for="recipe in breakfastRecipes" v-bind:key="recipe.firstName">
-      <p v-if="recipe.vegan">&#127807;</p>
+    <div class="recipeDiv" :class="{vegeBackground: recipe.vegan}" v-for="recipe in breakfastRecipes" v-bind:key="recipe.firstName">
+      <img src="../assets/vege-icon.svg" v-if="recipe.vegan" class="vegeIcon" alt="vege">
       <p> {{ recipe.firstName }} </p>
       <p> {{ recipe.typeOfMeal }} </p>
       <p v-if="recipe.count > 0"> {{ recipe.count }} </p>
@@ -124,19 +124,39 @@ export default {
 
 <style>
 
-
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: rgb(0, 0, 0);
+}
 
 .recipeDiv {
-  /* display: flex;
+  display: flex;
+  position: relative;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
   margin: 2vh;
   width: 20vw;
-  height: 30vh;
-  border: 1px solid green; */
-  /* background: linear-gradient(to top right, red, rgb(63, 63, 63), rgb(63, 63, 63), rgb(63, 63, 63)); */
+  height: 50vh;
+  border-radius: 15px;
+  background: rgb(238,8,8);
+  background: linear-gradient(202deg, rgba(158,153,153,0.7987570028011204) 0%, rgba(79,65,65,0.8015581232492998) 28%, rgba(43,25,24,0.7987570028011204) 61%, rgba(136,102,93,0.804359243697479) 92%);
 }
 
+.vegeIcon {
+  display: block;
+  position: absolute;
+  float: left;
+  left: 80%;
+  bottom: 85%;
+  width: 30px;
+  filter: invert(43%) sepia(78%) saturate(2694%) hue-rotate(78deg) brightness(90%) contrast(94%);
+}
+
+.vegeBackground {
+  background: linear-gradient(to bottom left, rgba(19, 155, 17, 0.753), rgb(79,65,65,0.8015581232492998), rgb(79,65,65,0.8015581232492998), rgb(79,65,65,0.8015581232492998));
+}
 
 </style>

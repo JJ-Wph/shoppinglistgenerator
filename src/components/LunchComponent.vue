@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="recipeDiv" v-for="recipe in lunchRecipes" v-bind:key="recipe.firstName">
-            <p v-if="recipe.vegan">Posiłek &#127807;</p>
+            <img src="../assets/vege-icon.svg" v-if="recipe.vegan" class="vegeIcon" alt="vege">
             <p> {{ recipe.firstName }} </p>
             <p> {{ recipe.typeOfMeal }} </p>
             <p v-if="recipe.count > 0"> {{ recipe.count }} </p>
