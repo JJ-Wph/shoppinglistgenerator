@@ -3,10 +3,10 @@
         <h2>Shopping List Generator</h2>
         <nav>
             <ul>
-                <li @click="activateBreakfast">Śniadania</li>
-                <li @click="activateLunch">Obiady</li>
-                <li @click="activateDinner">Kolacje</li>
-                <li @click="activateSnack">Przekąski</li>
+                <li @click="activateBreakfast" :class="{activeSection: isBreakfastActive}">Śniadania</li>
+                <li @click="activateLunch" :class="{activeSection: isLunchActive}">Obiady</li>
+                <li @click="activateDinner" :class="{activeSection: isDinnerActive}">Kolacje</li>
+                <li @click="activateSnack" :class="{activeSection: isSnackActive}">Przekąski</li>
             </ul>
         </nav>
     </header>
@@ -356,42 +356,50 @@ export default {
 
 
 
-        const addChips = () => {
+        const addChips = val => {
+            val.count++;
             listOfIgredients.chips.value++
         }
 
-        const addCarrotChips = () => {
+        const addCarrotChips = val => {
+            val.count++;
             listOfIgredients.carrotChips.value++
         }
 
-        const addChocolate = () => {
+        const addChocolate = val => {
+            val.count++;
             listOfIgredients.chocolate.value++
         }
 
-        const addSticks = () => {
+        const addSticks = val => {
+            val.count++;
             listOfIgredients.sticks.value++
         }
 
-        const deleteChips = () => {
+        const deleteChips = val => {
             if(listOfIgredients.chips.value > 0) {
+                val.count--;
                 listOfIgredients.chips.value--
             }
         }
 
-        const deleteCarrotChips = () => {
+        const deleteCarrotChips = val => {
             if(listOfIgredients.carrotChips.value > 0) {
+                val.count--;
                 listOfIgredients.carrotChips.value--
             }
         }
 
-        const deleteChocolate = () => {
+        const deleteChocolate = val => {
             if(listOfIgredients.chocolate.value > 0) {
+                val.count--;
                 listOfIgredients.chocolate.value--
             }
         }
 
-        const deleteSticks = () => {
+        const deleteSticks = val => {
             if(listOfIgredients.sticks.value > 0) {
+                val.count--;
                 listOfIgredients.sticks.value--
             }
         }
@@ -483,7 +491,7 @@ export default {
     header {
         grid-area: 1 / 2 / 2 / 7;
         background-color: rgb(37, 36, 36);
-        /* background: linear-gradient(to bottom right, red, rgb(63, 63, 63), rgb(63, 63, 63)); */
+        
     }
 
     h2 {
@@ -497,29 +505,41 @@ export default {
     nav {
         display: flex;
         flex-direction: row;
-        align-items: center;
         justify-content: center;
+        align-items: flex-end;
     }
 
     ul {
         display: flex;
-        flex-direction: row;
-        align-items: center;
         justify-content: center;
         list-style: none;
         padding: 0;
+        margin: 2rem 0 0 0;
     }
 
     li {
         cursor: pointer;
-        margin: 5%;
-        border: 2px black solid;
+        margin: 2%;
+        background-color: rgb(20, 20, 20);
+        border-radius: 15px;
+        padding: 0 2rem 0 2rem;
+        transition-duration: 0.1s;
     }
 
     .listDiv {
-        grid-area: 1 / 1 / 7 / 2;
+        grid-area: 1 / 3 / 6 / 5;
         background-color: rgb(37, 36, 36);
         padding: 0;
+        z-index: 1;
+    }
+
+    li:hover {
+        color: rgb(20, 20, 20);
+        background-color: rgb(238,8,8, 0.8);
+    }
+
+    li:active {
+        background-color:rgba(19, 155, 17, 0.753);
     }
 
     .listDiv > p {
@@ -529,10 +549,13 @@ export default {
         margin: 0;
     }
 
+    .activeSection {
+        background-color: rgb(238,8,8, 0.8);
+        color: rgb(20, 20, 20);
+    }
+
     .section {
         grid-area: 2 / 2 / 7 / 7;
-
-
     }
 
 </style>

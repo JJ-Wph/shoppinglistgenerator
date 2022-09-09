@@ -42,7 +42,7 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: rgb(190, 45, 45);
+  color: rgb(243, 23, 23);
 };
 
 
