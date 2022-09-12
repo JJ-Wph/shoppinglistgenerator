@@ -3,6 +3,7 @@
         <div class="recipeDiv" :class="{vegeBackground: recipe.vegan, countBackground: recipe.count > 0, countVegeBackground: recipe.vegan && recipe.count > 0}" v-for="recipe in snackRecipes" v-bind:key="recipe.firstName">
             <img src="../assets/vege-icon.svg" v-if="recipe.vegan" class="vegeIcon" alt="vege">
             <p> {{ recipe.firstName }} </p>
+            <img class="recipeImg" :src="require('../assets/' + recipe.image + '.png')" alt="">
             <p class="countNumber" v-if="recipe.count > 0"> {{ recipe.count }} </p>
             <div class="buttonContainer">
                 <button @click="recipe.addMethod">Dodaj do listy</button>
@@ -24,6 +25,7 @@ export default {
                 vegan: false,
                 addMethod: addChips,
                 deleteMethod: deleteChips,
+                image: 'chips',
                 count: 0,
             },
             {
@@ -32,6 +34,7 @@ export default {
                 vegan: true,
                 addMethod: addCarrotChips,
                 deleteMethod: deleteCarrotChips,
+                image: 'carrotchips',
                 count: 0,
             },
             {
@@ -40,6 +43,7 @@ export default {
                 vegan: false,
                 addMethod: addChocolate,
                 deleteMethod: deleteChocolate,
+                image: 'chocolate',
                 count: 0,
             },
             {
@@ -48,6 +52,7 @@ export default {
                 vegan: true,
                 addMethod: addSticks,
                 deleteMethod: deleteSticks,
+                image: 'sticks',
                 count: 0,
             },
         ])

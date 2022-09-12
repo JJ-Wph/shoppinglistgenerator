@@ -575,7 +575,7 @@ export default {
     }
 
     .showList-enter-active, .showList-leave-active {
-        transition: opacity .5s ease;
+        transition: opacity 1s ease;
     }
 
     .showList-enter-from, .showList-leave-to {

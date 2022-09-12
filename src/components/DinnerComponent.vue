@@ -3,6 +3,7 @@
         <div class="recipeDiv" :class="{vegeBackground: recipe.vegan, countBackground: recipe.count > 0, countVegeBackground: recipe.vegan && recipe.count > 0}" v-for="recipe in dinnerRecipes" v-bind:key="recipe.firstName">
             <img src="../assets/vege-icon.svg" v-if="recipe.vegan" class="vegeIcon" alt="vege">
             <p> {{ recipe.firstName }} </p>
+            <img class="recipeImg" :src="require('../assets/' + recipe.image + '.png')" alt="">
             <p class="countNumber" v-if="recipe.count > 0"> {{ recipe.count }} </p>
             <div class="buttonContainer">
                 <button @click="recipe.addMethod">Dodaj do listy</button>
@@ -24,6 +25,7 @@ export default {
                 vegan: false,
                 addMethod: addChickenSalad,
                 deleteMethod: deleteChickenSalad,
+                image: 'chickensalad',
                 count: 0,
                 chicken: 150,
                 chickPeas: 100,
@@ -38,6 +40,7 @@ export default {
                 vegan: false,
                 addMethod: addCheeseSandwich,
                 deleteMethod: deleteCheeseSandwich,
+                image: 'cheesesandwich',
                 count: 0,
                 cheese: 100,
                 roll: 1,
@@ -50,6 +53,7 @@ export default {
                 vegan: true,
                 addMethod: addTofuSalad,
                 deleteMethod: deleteTofuSalad,
+                image: 'tofusalad',
                 count: 0,
                 tofu: 150,
                 chickPeas: 100,
@@ -59,11 +63,12 @@ export default {
                 mayonnaise: 50,
             },
             {
-                firstName: 'Pieczone bataty z pomidorami',
+                firstName: 'Pieczone bataty',
                 typeOfMeal: 'kolacja',
                 vegan: true,
                 addMethod: addSweetPotatos,
                 deleteMethod: deleteSweetPotatos,
+                image: 'sweetpotato',
                 count: 0,
                 sweetPotato: 300,
                 tomato: 200,

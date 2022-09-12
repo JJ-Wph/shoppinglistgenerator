@@ -3,6 +3,7 @@
         <div class="recipeDiv" :class="{vegeBackground: recipe.vegan, countBackground: recipe.count > 0, countVegeBackground: recipe.vegan && recipe.count > 0}" v-for="recipe in lunchRecipes" v-bind:key="recipe.firstName">
             <img src="../assets/vege-icon.svg" v-if="recipe.vegan" class="vegeIcon" alt="vege">
             <p> {{ recipe.firstName }} </p>
+            <img class="recipeImg" :src="require('../assets/' + recipe.image + '.png')" alt="">
             <p class="countNumber" v-if="recipe.count > 0"> {{ recipe.count }} </p>
             <div class="buttonContainer">
                 <button @click="recipe.addMethod">Dodaj do listy</button>
@@ -24,6 +25,7 @@ export default {
                 vegan: false,
                 addMethod: addChickenPasta,
                 deleteMethod: deleteChickenPasta,
+                image: 'chickenpasta',
                 count: 0,
                 onion: 20,
                 tomato: 200,
@@ -37,6 +39,7 @@ export default {
                 vegan: false,
                 addMethod: addCheeseburger,
                 deleteMethod: deleteCheeseburger,
+                image: 'cheeseburger',
                 count: 0,
                 onion: 20,
                 tomato: 100,
@@ -51,6 +54,7 @@ export default {
                 vegan: false,
                 addMethod: addPancakes,
                 deleteMethod: deletePancakes,
+                image: 'pancakes',
                 count: 0,
                 flour: 130,
                 eggs: 1,
@@ -64,6 +68,7 @@ export default {
                 vegan: true,
                 addMethod: addVegeNuggets,
                 deleteMethod: deleteVegeNuggets,
+                image: 'vegenuggets',
                 count: 0,
                 sweetPotato: 500,
                 chickPeas: 240,

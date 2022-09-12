@@ -3,7 +3,7 @@
     <div class="recipeDiv" :class="{vegeBackground: recipe.vegan, countBackground: recipe.count > 0, countVegeBackground: recipe.vegan && recipe.count > 0}" v-for="recipe in breakfastRecipes" v-bind:key="recipe.firstName">
       <img src="../assets/vege-icon.svg" v-if="recipe.vegan" class="vegeIcon" alt="vege">
       <p> {{ recipe.firstName }} </p>
-      <img :src="require('../assets/' + recipe.image + 'png')" alt="">
+      <img class="recipeImg" :src="require('../assets/' + recipe.image + '.png')" alt="">
       <p class="countNumber" v-if="recipe.count > 0"> {{ recipe.count }} </p>
       <div class="buttonContainer">
         <button @click="recipe.addMethod">Dodaj do listy</button>
@@ -20,7 +20,7 @@ export default {
   setup(props, {emit}) {
     const breakfastRecipes = ref([
       {
-        firstName: 'Jajecznica na boczku z pomidorami',
+        firstName: 'Jajecznica z pomidorami',
         typeOfMeal: 'śniadanie',
         vegan: false,
         addMethod: addScrambledEggs,
@@ -64,6 +64,7 @@ export default {
         vegan: true,
         addMethod: addTofuPaste,
         deleteMethod: deleteTofuPaste,
+        image: 'tofupaste',
         count: 0,
         tofu: 200,
         roll: 1,
@@ -141,7 +142,7 @@ export default {
   display: flex;
   position: relative;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   margin: 2vh;
   width: 20vw;
@@ -205,9 +206,13 @@ button:active {
 .countNumber {
   right: 78%;
   top: 80%;
-
   color: black;
   font-size: 1.5rem;
+}
+
+.recipeImg {
+  width: 10rem;
+  height: 10rem;
 }
 
 .vegeBackground {
