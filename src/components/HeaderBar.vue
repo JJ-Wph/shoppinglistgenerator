@@ -7,17 +7,22 @@
                 <li @click="activateLunch" :class="{activeSection: isLunchActive}">Obiady</li>
                 <li @click="activateDinner" :class="{activeSection: isDinnerActive}">Kolacje</li>
                 <li @click="activateSnack" :class="{activeSection: isSnackActive}">Przekąski</li>
+                <li @click="isListDivActive=!isListDivActive" :class="{activeSection: isListDivActive}">Lista Zakupów</li>
             </ul>
         </nav>
     </header>
-    <div class="listDiv" id="listDivToPDF">
-        <h3>Lista Zakupów</h3>
-        <template v-for="product in listOfIgredients" :key="product">
-            <p v-if="product.value > 0">{{product.polishWord}}: {{product.value}} {{product.unit}}</p>
-        </template>
-        <button @click="exportToPDF">Zapisz jako PDF</button>
-    </div>
-
+    <transition name="showList" mode="out-in">
+        <div v-if="isListDivActive" class="listDiv" :class="{white: isWhite, dark: isDark}" id="listDivToPDF">
+            <h3>Lista Zakupów</h3>
+            <button @click="exportToPDF" data-html2canvas-ignore>Zapisz jako PDF</button>
+            <button @click="isListDivActive=!isListDivActive" data-html2canvas-ignore>Zamknij</button>
+            <template v-for="product in listOfIgredients" :key="product">
+                <p v-if="product.value > 0">{{product.polishWord}}: {{product.value}} {{product.unit}}</p>
+            </template>
+            
+        </div>
+    </transition>
+    <transition name="showList" mode="out-in">
     <BreakfastComponent 
         class="section"
         v-show="isBreakfastActive" 
@@ -30,7 +35,9 @@
         @delete-Egg-Salad-From-List=deleteEggSalad
         @delete-Tofu-Paste-From-List=deleteTofuPaste
     />
+    </transition>
 
+    <transition name="showList" mode="out-in">
     <LunchComponent 
         class="section"
         v-show="isLunchActive"
@@ -43,7 +50,8 @@
         @delete-Pancakes-From-List=deletePancakes
         @delete-Vege-Nuggets-From-List=deleteVegeNuggets
     />
-
+    </transition>
+    <transition name="showList" mode="out-in">
     <DinnerComponent 
         class="section"
         v-show="isDinnerActive"
@@ -56,7 +64,8 @@
         @delete-Tofu-Salad-From-List=deleteTofuSalad
         @delete-Sweet-Potatos-From-List=deleteSweetPotatos
     />
-
+    </transition>
+    <transition name="showList" mode="out-in">
     <SnackComponent 
         class="section"
         v-show="isSnackActive"
@@ -69,6 +78,7 @@
         @delete-Chocolate-From-List=deleteChocolate
         @delete-Sticks-From-List=deleteSticks
     />
+    </transition>
 </template>
 
 <script>
@@ -92,6 +102,9 @@ export default {
         const isLunchActive = ref(false);
         const isDinnerActive = ref(false);
         const isSnackActive = ref(false);
+        const isListDivActive = ref(false);
+        const isWhite = ref(false);
+        const isDark = ref(true)
 
         const listOfIgredients = reactive({
             onion:{ value: 0, polishWord: 'cebula', unit: 'g'},
@@ -433,10 +446,19 @@ export default {
         }
 
         function exportToPDF() {
+            isWhite.value = true;
+            isDark.value = false;
+            console.log(isWhite.value);
             html2pdf(document.getElementById('listDivToPDF'), {
-                margin: 2,
                 filename: "lista zakupów.pdf",
+                margin: 5,
             });
+            setTimeout(function() {
+                isWhite.value = false;
+                isDark.value = true;
+                console.log(isWhite.value);
+            }, 200);
+            
         }
 
         return { 
@@ -444,6 +466,9 @@ export default {
             isLunchActive, 
             isDinnerActive, 
             isSnackActive,
+            isListDivActive,
+            isWhite,
+            isDark,
             listOfIgredients, 
             activateBreakfast,
             activateLunch, 
@@ -489,7 +514,7 @@ export default {
 
 <style scoped>
     header {
-        grid-area: 1 / 2 / 2 / 7;
+        grid-area: 1 / 1 / 2 / 7;
         background-color: rgb(37, 36, 36);
         
     }
@@ -512,6 +537,7 @@ export default {
     ul {
         display: flex;
         justify-content: center;
+        align-items: center;
         list-style: none;
         padding: 0;
         margin: 2rem 0 0 0;
@@ -522,13 +548,12 @@ export default {
         margin: 2%;
         background-color: rgb(20, 20, 20);
         border-radius: 15px;
-        padding: 0 2rem 0 2rem;
+        padding: 0 2.5rem 0 2.5rem;
         transition-duration: 0.1s;
     }
 
     .listDiv {
         grid-area: 1 / 3 / 6 / 5;
-        background-color: rgb(37, 36, 36);
         padding: 0;
         z-index: 1;
     }
@@ -549,13 +574,36 @@ export default {
         margin: 0;
     }
 
+    .showList-enter-active, .showList-leave-active {
+        transition: opacity .5s ease;
+    }
+
+    .showList-enter-from, .showList-leave-to {
+        opacity: 0;
+    }
+
+    .showList-leave-from, .showList-enter-to {
+        opacity: 1;
+    }
+
     .activeSection {
         background-color: rgb(238,8,8, 0.8);
         color: rgb(20, 20, 20);
     }
 
     .section {
-        grid-area: 2 / 2 / 7 / 7;
+        grid-area: 2 / 1 / 7 / 7;
     }
+
+    .white {
+        background-color: rgb(255, 255, 255);
+        transition: 0.2s;
+    }
+
+    .dark {
+        background-color: rgb(37, 36, 36);
+        transition: 0.2s;
+    }
+
 
 </style>

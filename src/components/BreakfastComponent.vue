@@ -3,6 +3,7 @@
     <div class="recipeDiv" :class="{vegeBackground: recipe.vegan, countBackground: recipe.count > 0, countVegeBackground: recipe.vegan && recipe.count > 0}" v-for="recipe in breakfastRecipes" v-bind:key="recipe.firstName">
       <img src="../assets/vege-icon.svg" v-if="recipe.vegan" class="vegeIcon" alt="vege">
       <p> {{ recipe.firstName }} </p>
+      <img :src="require('../assets/' + recipe.image + 'png')" alt="">
       <p class="countNumber" v-if="recipe.count > 0"> {{ recipe.count }} </p>
       <div class="buttonContainer">
         <button @click="recipe.addMethod">Dodaj do listy</button>
@@ -24,6 +25,7 @@ export default {
         vegan: false,
         addMethod: addScrambledEggs,
         deleteMethod: deleteScrambledEggs,
+        image: 'scrambledeggs',
         count: 0,
         eggs: 4,
         onion: 40,
@@ -37,6 +39,7 @@ export default {
         vegan: false,
         addMethod: addSkyrPancakes,
         deleteMethod: deleteSkyrPancakes,
+        image: 'skyrpancakes',
         count: 0,
         eggs: 1,
         vanillaSkyr: 150,
@@ -48,6 +51,7 @@ export default {
         vegan: false,
         addMethod: addEggSalad,
         deleteMethod: deleteEggSalad,
+        image: 'eggpaste',
         count: 0,
         eggs: 2,
         mayonnaise: 50,
@@ -129,6 +133,7 @@ export default {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   background: rgb(0, 0, 0);
 }
 
@@ -198,8 +203,9 @@ button:active {
 }
 
 .countNumber {
-  right: 83%;
+  right: 78%;
   top: 80%;
+
   color: black;
   font-size: 1.5rem;
 }
