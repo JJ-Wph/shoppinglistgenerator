@@ -448,7 +448,6 @@ export default {
         function exportToPDF() {
             isWhite.value = true;
             isDark.value = false;
-            console.log(isWhite.value);
             html2pdf(document.getElementById('listDivToPDF'), {
                 filename: "lista zakupów.pdf",
                 margin: 5,
@@ -456,7 +455,6 @@ export default {
             setTimeout(function() {
                 isWhite.value = false;
                 isDark.value = true;
-                console.log(isWhite.value);
             }, 200);
             
         }
@@ -515,6 +513,10 @@ export default {
 <style scoped>
     header {
         grid-area: 1 / 1 / 2 / 7;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
         background-color: rgb(37, 36, 36);
         
     }
@@ -529,9 +531,7 @@ export default {
 
     nav {
         display: flex;
-        flex-direction: row;
         justify-content: center;
-        align-items: flex-end;
     }
 
     ul {
@@ -540,7 +540,7 @@ export default {
         align-items: center;
         list-style: none;
         padding: 0;
-        margin: 2rem 0 0 0;
+        margin: 0 0 0 0;
     }
 
     li {
@@ -553,7 +553,7 @@ export default {
     }
 
     .listDiv {
-        grid-area: 1 / 3 / 6 / 5;
+        grid-area: 1 / 3 / 7 / 5;
         padding: 0;
         z-index: 1;
     }
@@ -605,5 +605,25 @@ export default {
         transition: 0.2s;
     }
 
+
+    @media (orientation: portrait) {
+        ul {
+            display: flex;
+            flex-direction: column;
+        }
+
+        li {
+            margin: 0.5%;
+            background-color: rgb(20, 20, 20);
+            border-radius: 15px;
+            padding: 0 2.5rem 0 2.5rem;
+            width: 6rem;
+            font-size: 0.8rem;
+        }
+
+        .listDiv {
+        grid-area: 1 / 2 / 7 / 6;
+        }
+    }
 
 </style>

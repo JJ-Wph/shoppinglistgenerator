@@ -63,7 +63,7 @@ export default {
                 mayonnaise: 50,
             },
             {
-                firstName: 'Pieczone bataty',
+                firstName: 'Pieczone bataty z pomidorami',
                 typeOfMeal: 'kolacja',
                 vegan: true,
                 addMethod: addSweetPotatos,

@@ -132,7 +132,6 @@ export default {
 
 .container {
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
   background: rgb(0, 0, 0);
@@ -144,7 +143,7 @@ export default {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  margin: 2vh;
+  margin: 1rem;
   width: 20vw;
   height: 50vh;
   border-radius: 15px;
@@ -153,7 +152,7 @@ export default {
 }
 
 .recipeDiv > p {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   margin: 0;
   padding: 2rem;
 }
@@ -207,7 +206,7 @@ button:active {
   right: 78%;
   top: 80%;
   color: black;
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 .recipeImg {
@@ -227,4 +226,93 @@ button:active {
   background: linear-gradient(to bottom left, rgba(19, 155, 17, 0.753), rgba(79,65,65,0.8015581232492998) 28%, rgba(56, 48, 47, 0.799) 61%, rgba(219, 28, 28, 0.753) 92%);
 }
 
+
+@media (max-width: 1400px) {
+  .recipeDiv > p {
+  font-size: 1rem;
+  margin: 0;
+  padding: 2rem;
+  }
+
+  button {
+    padding: 0.3rem 2rem 0.3rem 2rem;
+  }
+}
+
+@media (max-width: 880px) {
+  .recipeDiv > p {
+  font-size: 1.2rem;
+  }
+
+  .buttonContainer {
+  justify-content: flex-start;
+  }
+
+  button {
+    padding: 0.2rem 2.2rem 0.2rem 2.2rem;
+    font-size: 0.7rem;
+  }
+
+  .recipeImg {
+  width: 6rem;
+  height: 6rem;
+  }
+
+  .countNumber {
+  right: 70%;
+  top: 85%;
+  color: black;
+  font-size: 1.5rem;
+  }
+}
+
+
+@media (orientation: portrait) {
+  .container {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .recipeDiv {
+    flex-direction: row;
+    justify-content: space-around;
+    width: 90vw;
+    height: 16vh;
+    margin: 0.5rem;
+  }
+
+  .recipeDiv > p {
+  font-size: 0.8rem;
+  padding: 0.1rem;
+  width: 125px;
+  }
+
+  .buttonContainer {
+    justify-content: center;
+    padding: 0.2rem;
+  }
+
+  button {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.7rem 0.4rem 0.7rem;
+    margin: 0.1rem;
+  }
+
+  .recipeImg {
+  width: 4rem;
+  height: 4rem;
+  }
+
+  .vegeIcon {
+  left: 90%;
+  bottom: 75%;
+  }
+
+  .countNumber {
+  right: 75%;
+  top: 70%;
+  width: 10px;
+  font-size: 8rem;
+  }
+}
 </style>
