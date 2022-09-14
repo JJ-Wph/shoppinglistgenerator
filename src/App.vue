@@ -18,7 +18,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
 
 html, body {
