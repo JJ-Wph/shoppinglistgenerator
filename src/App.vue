@@ -44,8 +44,5 @@ html, body {
   text-align: center;
   background-color: rgb(0, 0, 0);
   color: rgb(243, 23, 23);
-};
-
-
-
+}
 </style>
