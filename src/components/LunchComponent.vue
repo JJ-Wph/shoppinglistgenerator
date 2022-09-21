@@ -3,7 +3,7 @@
         <div class="recipeDiv" :class="{vegeBackground: recipe.vegan, countBackground: recipe.count > 0, countVegeBackground: recipe.vegan && recipe.count > 0}" v-for="recipe in lunchRecipes" v-bind:key="recipe.firstName">
             <img src="../assets/vege-icon.svg" v-if="recipe.vegan" class="vegeIcon" alt="vege">
             <p> {{ recipe.firstName }} </p>
-            <img class="recipeImg" :src="require('../assets/' + recipe.image + '.png')" alt="">
+            <img class="recipeImg" rel="preload" :src="require('../assets/' + recipe.image + '.png')" alt="">
             <p class="countNumber" v-if="recipe.count > 0"> {{ recipe.count }} </p>
             <div class="buttonContainer">
                 <button @click="recipe.addMethod">Dodaj do listy</button>
