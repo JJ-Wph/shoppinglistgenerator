@@ -11,74 +11,73 @@
             </ul>
         </nav>
     </header>
-    <transition name="showList" mode="out-in">
+    <transition-group name="showList" mode="out-in">
         <div v-if="isListDivActive" class="listDiv" :class="{white: isWhite, dark: isDark}" id="listDivToPDF">
             <h3>Lista Zakupów</h3>
             <button @click="exportToPDF" data-html2canvas-ignore>Zapisz jako PDF</button>
             <button @click="isListDivActive=!isListDivActive" data-html2canvas-ignore>Zamknij</button>
             <template v-for="product in listOfIgredients" :key="product">
-                <p v-if="product.value > 0">{{product.polishWord}}: {{product.value}} {{product.unit}}</p>
+            <p v-if="product.value > 0">{{product.polishWord}}: {{product.value}} {{product.unit}}</p>
             </template>
-            
         </div>
-    </transition>
-    <transition name="showList" mode="out-in">
-    <BreakfastComponent 
-        class="section"
-        v-show="isBreakfastActive" 
-        @add-eggs-to-list=addScrambledEggs
-        @add-skyr-pancakes-to-list=addSkyrPancakes
-        @add-Egg-Salad-To-List=addEggSalad
-        @add-Tofu-Paste-To-List=addTofuPaste
-        @delete-Scrambled-Eggs-From-List=deleteScrambledEggs
-        @delete-Skyr-Pancakes-From-List=deleteSkyrPancakes
-        @delete-Egg-Salad-From-List=deleteEggSalad
-        @delete-Tofu-Paste-From-List=deleteTofuPaste
-    />
-    </transition>
+    
+    
+        <BreakfastComponent 
+            class="section"
+            :key="1"
+            v-show="isBreakfastActive" 
+            @add-eggs-to-list=addScrambledEggs
+            @add-skyr-pancakes-to-list=addSkyrPancakes
+            @add-Egg-Salad-To-List=addEggSalad
+            @add-Tofu-Paste-To-List=addTofuPaste
+            @delete-Scrambled-Eggs-From-List=deleteScrambledEggs
+            @delete-Skyr-Pancakes-From-List=deleteSkyrPancakes
+            @delete-Egg-Salad-From-List=deleteEggSalad
+            @delete-Tofu-Paste-From-List=deleteTofuPaste
+        />
 
-    <transition name="showList" mode="out-in">
-    <LunchComponent 
-        class="section"
-        v-show="isLunchActive"
-        @add-Chicken-Pasta-To-List=addChickenPasta
-        @add-Cheeseburger-To-List=addCheeseburger
-        @add-Pancakes-To-List=addPancakes
-        @add-Vege-Nuggets-To-List=addVegeNuggets
-        @delete-Chicken-Pasta-From-List=deleteChickenPasta
-        @delete-Cheeseburger-From-List=deleteCheeseburger
-        @delete-Pancakes-From-List=deletePancakes
-        @delete-Vege-Nuggets-From-List=deleteVegeNuggets
-    />
-    </transition>
-    <transition name="showList" mode="out-in">
-    <DinnerComponent 
-        class="section"
-        v-show="isDinnerActive"
-        @add-Chicken-Salad-To-List=addChickenSalad
-        @add-Cheese-Sandwich-To-List=addCheeseSandwich
-        @add-Tofu-Salad-To-List=addTofuSalad
-        @add-Sweet-Potatos-To-List=addSweetPotatos
-        @delete-Chicken-Salad-From-List=deleteChickenSalad
-        @delete-Cheese-Sandwich-From-List=deleteCheeseSandwich
-        @delete-Tofu-Salad-From-List=deleteTofuSalad
-        @delete-Sweet-Potatos-From-List=deleteSweetPotatos
-    />
-    </transition>
-    <transition name="showList" mode="out-in">
-    <SnackComponent 
-        class="section"
-        v-show="isSnackActive"
-        @add-Chips-To-List=addChips
-        @add-Carrot-Chips-To-List=addCarrotChips
-        @add-Chocolate-To-List=addChocolate
-        @add-Sticks-To-List=addSticks
-        @delete-Chips-From-List=deleteChips
-        @delete-Carrot-Chips-From-List=deleteCarrotChips
-        @delete-Chocolate-From-List=deleteChocolate
-        @delete-Sticks-From-List=deleteSticks
-    />
-    </transition>
+        <LunchComponent 
+            class="section"
+            :key="2"
+            v-show="isLunchActive"
+            @add-Chicken-Pasta-To-List=addChickenPasta
+            @add-Cheeseburger-To-List=addCheeseburger
+            @add-Pancakes-To-List=addPancakes
+            @add-Vege-Nuggets-To-List=addVegeNuggets
+            @delete-Chicken-Pasta-From-List=deleteChickenPasta
+            @delete-Cheeseburger-From-List=deleteCheeseburger
+            @delete-Pancakes-From-List=deletePancakes
+            @delete-Vege-Nuggets-From-List=deleteVegeNuggets
+        />
+
+        <DinnerComponent 
+            class="section"
+            :key="3"
+            v-show="isDinnerActive"
+            @add-Chicken-Salad-To-List=addChickenSalad
+            @add-Cheese-Sandwich-To-List=addCheeseSandwich
+            @add-Tofu-Salad-To-List=addTofuSalad
+            @add-Sweet-Potatos-To-List=addSweetPotatos
+            @delete-Chicken-Salad-From-List=deleteChickenSalad
+            @delete-Cheese-Sandwich-From-List=deleteCheeseSandwich
+            @delete-Tofu-Salad-From-List=deleteTofuSalad
+            @delete-Sweet-Potatos-From-List=deleteSweetPotatos
+        />
+
+        <SnackComponent 
+            class="section"
+            :key="4"
+            v-show="isSnackActive"
+            @add-Chips-To-List=addChips
+            @add-Carrot-Chips-To-List=addCarrotChips
+            @add-Chocolate-To-List=addChocolate
+            @add-Sticks-To-List=addSticks
+            @delete-Chips-From-List=deleteChips
+            @delete-Carrot-Chips-From-List=deleteCarrotChips
+            @delete-Chocolate-From-List=deleteChocolate
+            @delete-Sticks-From-List=deleteSticks
+        />
+    </transition-group>
 </template>
 
 <script>
