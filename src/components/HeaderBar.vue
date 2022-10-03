@@ -17,11 +17,10 @@
             <button @click="exportToPDF" data-html2canvas-ignore>Zapisz jako PDF</button>
             <button @click="isListDivActive=!isListDivActive" data-html2canvas-ignore>Zamknij</button>
             <template v-for="product in listOfIgredients" :key="product">
-            <p v-if="product.value > 0">{{product.polishWord}}: {{product.value}} {{product.unit}}</p>
+                <p v-if="product.value > 0">{{product.polishWord}}: {{product.value}} {{product.unit}}</p>
             </template>
         </div>
-    
-    
+
         <BreakfastComponent 
             class="section"
             :key="1"
@@ -103,7 +102,7 @@ export default {
         const isSnackActive = ref(false);
         const isListDivActive = ref(false);
         const isWhite = ref(false);
-        const isDark = ref(true)
+        const isDark = ref(true);
 
         const listOfIgredients = reactive({
             onion:{ value: 0, polishWord: 'cebula', unit: 'g'},
@@ -318,9 +317,6 @@ export default {
             listOfIgredients.tomato.value += val.tomato;
         }
 
-
-
-
         const deleteChickenSalad = val => {
             if(val.count > 0) {
                 val.count--;
@@ -362,11 +358,6 @@ export default {
                 listOfIgredients.tomato.value -= val.tomato;
             }
         }
-
-
-
-
-
 
         const addChips = val => {
             val.count++;
@@ -455,7 +446,6 @@ export default {
                 isWhite.value = false;
                 isDark.value = true;
             }, 200);
-            
         }
 
         return { 
@@ -570,6 +560,10 @@ export default {
         display: flex;
         flex-wrap: wrap;
         flex-flow: column wrap;
+        margin: 0;
+    }
+
+    .listDiv > div {
         margin: 0;
     }
 
