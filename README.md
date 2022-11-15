@@ -16,8 +16,10 @@ On click "Zapisz jako PDF" list will be exported to PDF file and download.
 * NPM
 * html2pdf.js
 
-## Screenshots
+### Screenshot 1
 ![image](https://user-images.githubusercontent.com/71273681/201973690-4ec82098-6980-4a25-9497-a2e0be5c2662.png)
+
+### Screenshot 2
 ![image](https://user-images.githubusercontent.com/71273681/201973800-d54105bb-0c4f-4794-837b-ca0ee8b72f9d.png)
 
 
