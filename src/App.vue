@@ -4,13 +4,11 @@
 
 <script>
 import HeaderBar from './components/HeaderBar.vue';
-
 export default {
   name: 'App',
   components: {
     HeaderBar
   },
-
   setup(){
     return {
     }
@@ -20,14 +18,12 @@ export default {
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
-
 html, body {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100vh;
 }
-
 #app {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -42,7 +38,6 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  background-color: rgb(0, 0, 0);
-  color: rgb(243, 23, 23);
+  color: rgb(21, 113, 24);
 }
 </style>

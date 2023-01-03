@@ -134,7 +134,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgb(0, 0, 0);
+  background-color: rgb(142, 220, 186)
 }
 
 .recipeDiv {
@@ -147,8 +147,7 @@ export default {
   width: 20vw;
   height: 50vh;
   border-radius: 15px;
-  background: rgb(238,8,8);
-  background: linear-gradient(to bottom left, rgba(136, 129, 129, 0.799) 0%, rgba(79,65,65,0.8015581232492998) 28%, rgba(56, 48, 47, 0.799) 61%, rgba(102, 96, 95, 0.804) 92%);
+  background: linear-gradient(to bottom left, rgb(234, 244, 236) 0%, rgb(219, 242, 223) 28%, rgb(217, 240, 222) 61%, rgb(184, 206, 188) 92%);
 }
 
 .recipeDiv > p {
@@ -175,7 +174,7 @@ export default {
 
 button {
   cursor: pointer;
-  color: rgb(238,8,8, 0.8);
+  color: rgb(21, 113, 24);
   background-color: rgb(20, 20, 20);
   border: none;
   border-radius: 15px;
@@ -188,7 +187,7 @@ button {
 
 button:hover {
   color: rgb(20, 20, 20);
-  background-color: rgb(238,8,8, 0.8);
+  background-color: rgb(21, 113, 24);
 }
 
 button:active {
@@ -215,17 +214,16 @@ button:active {
 }
 
 .vegeBackground {
-  background: linear-gradient(to bottom left, rgba(19, 155, 17, 0.753), rgba(79,65,65,0.8015581232492998) 28%, rgba(56, 48, 47, 0.799) 61%, rgba(102, 96, 95, 0.804) 92%);
+  background: linear-gradient(to bottom left, rgba(19, 155, 17, 0.753), rgb(172, 220, 181) 28%, rgb(144, 233, 160) 61%, rgb(171, 222, 181) 92%);
 }
 
 .countBackground { 
-  background: linear-gradient(to bottom left, rgba(136, 129, 129, 0.799) 0%, rgba(79,65,65,0.8015581232492998) 28%, rgba(56, 48, 47, 0.799) 61%, rgba(219, 28, 28, 0.753) 92%);
+  background: linear-gradient(to bottom left, rgb(234, 244, 236) 0%, rgb(219, 242, 223) 28%, rgb(217, 240, 222) 61%, rgba(19, 155, 17, 0.753) 92%);
 }
 
 .countVegeBackground {
-  background: linear-gradient(to bottom left, rgba(19, 155, 17, 0.753), rgba(79,65,65,0.8015581232492998) 28%, rgba(56, 48, 47, 0.799) 61%, rgba(219, 28, 28, 0.753) 92%);
+  background: linear-gradient(to bottom left, rgba(19, 155, 17, 0.753), rgb(172, 220, 181) 28%, rgb(144, 233, 160) 61%, rgba(19, 155, 17, 0.753) 92%);
 }
-
 
 @media (max-width: 1400px) {
   .recipeDiv > p {

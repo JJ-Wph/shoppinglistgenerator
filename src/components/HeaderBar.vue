@@ -506,8 +506,7 @@ export default {
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
-        background-color: rgb(37, 36, 36);
-        
+        background-color: rgb(142, 220, 186)
     }
 
     h2 {
@@ -549,7 +548,7 @@ export default {
 
     li:hover {
         color: rgb(20, 20, 20);
-        background-color: rgb(238,8,8, 0.8);
+        background-color: rgb(21, 113, 24);
     }
 
     li:active {
@@ -580,7 +579,7 @@ export default {
     }
 
     .activeSection {
-        background-color: rgb(238,8,8, 0.8);
+        background-color: rgb(21, 113, 24);
         color: rgb(20, 20, 20);
     }
 
