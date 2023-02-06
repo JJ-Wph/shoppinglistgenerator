@@ -17,10 +17,10 @@ On click "Zapisz jako PDF" list will be exported to PDF file and download.
 * html2pdf.js
 
 ### Screenshot 1
-![image](https://user-images.githubusercontent.com/71273681/201973690-4ec82098-6980-4a25-9497-a2e0be5c2662.png)
+![obraz](https://user-images.githubusercontent.com/71273681/216972736-8c4bc620-bc37-4a0d-9a10-5c62fa8b209b.png)
 
 ### Screenshot 2
-![image](https://user-images.githubusercontent.com/71273681/201973800-d54105bb-0c4f-4794-837b-ca0ee8b72f9d.png)
+![obraz](https://user-images.githubusercontent.com/71273681/216972796-86ea9bb7-4924-4d3d-b95b-afc3186f6a85.png)
 
 
 
